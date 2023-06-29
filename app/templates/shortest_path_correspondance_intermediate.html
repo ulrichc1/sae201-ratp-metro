@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RATP Métro+</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+          integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link
+            rel="stylesheet"
+            href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+            integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+            crossorigin=""
+    />
+    <script
+            src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin=""
+    ></script>
+    <style>
+        #container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin-bottom: 2vh;
+        }
+
+        #calcul{
+            margin-top: 2vh;
+        }
+
+        #mymap {
+            height: 40vw;
+            width: 80%;
+            margin-top: 2vh;
+        }
+
+        #result {
+            width: 75%;
+        }
+
+        .btn{
+            margin-left: 1vw;
+            background-color: #36c7a8;
+            border: #36c7a8 ;
+            height: 6vh;
+            margin-top: 1.8vw;
+        }
+
+        .btn:hover{
+            background-color: #279676;
+            border: #279676 ;
+            height: 6vh;
+            margin-top: 1.8vw;
+
+        }
+
+        .sct1{
+            margin-left: 1vw;
+        }
+
+        .sct1, .sct2 {
+            margin-right: 1vw;
+            width: 40%;
+        }
+
+        .sct3 {
+            width: 40%;
+        }
+
+        .r {
+            margin-right: 1vw;
+        }
+    </style>
+<link href="{{ url_for('static', filename='index.css') }}" rel="stylesheet">
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-light" style="background-color: white;">
+            <div class="container-fluid d-flex justify-content-center">
+                <a class="navbar-brand" href="/">
+                    <img src="/images/logo.png" alt="RATP" width="85" height="60" class="d-inline-block align-text-top">
+                </a>
+            </div>
+        </nav>
+    </header>
+<div id="container">
+<div id="calcul" class="mb-3 d-flex">
+    <form method="post" action="/shortest_path_correspondance_intermediate" class="d-flex flex-row">
+        <div class="sct1 mb-3">
+            <label for="station1" class="form-label">Station 1</label>
+            <select name="station1" id="station1" class="form-select" required>
+                {% for station in stations %}
+                <option value="{{ station.get_id() }}">{{ station.get_nom().replace('_', ' ') }} - Ligne {{
+                    station.get_numligne() }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="sct2 mb-3">
+            <label for="intermediate" class="form-label">Station étape</label>
+            <select name="intermediate" id="intermediate" class="form-select" required>
+                {% for station in stations %}
+                <option value="{{ station.get_id() }}">{{ station.get_nom().replace('_', ' ') }} - Ligne {{
+                    station.get_numligne() }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="sct3 mb-3">
+            <label for="station2" class="form-label">Station 2</label>
+            <select name="station2" id="station2" class="form-select" required>
+                {% for station in stations %}
+                <option value="{{ station.get_id() }}">{{ station.get_nom().replace('_', ' ') }} - Ligne {{
+                    station.get_numligne() }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+        <input type="submit" value="Calculer" class="btn btn-primary r">
+    </form>
+</div>
+    {% if shortest_path != [] %}
+<div id="result" class="card mb-3">
+    <div class="card-body">
+        <h2>Résultat : {{ source + ' vers ' + target + ' par ' + intermediate}}</h2>
+        <p> Chemin le plus court (en termes de nombre de correspondances) :
+            {% for station in shortest_path %}
+            {{ station.split('_')[0].replace('_', ' ') }}
+            {% if station.split('_')[1] %}
+            (Ligne {{ station.split('_')[1] }})
+            {% endif %}
+            {% if not loop.last %} - {% endif %}
+            {% endfor %}
+        </p>
+        <p>Temps total : {{ total_time | format_time }}</p>
+    </div>
+</div>
+{% endif %}
+
+    <div id="mymap"></div>
+
+</div>
+<script>
+    const colors = {
+        "1": "#FCDC12",
+        "2": "#007FFF",
+        "3": "#808000",
+        "3bis": "#77B5FE",
+        "4": "#d00170",
+        "5": "#ff7f00",
+        "6": "#16b84e",
+        "7": "#f6add7",
+        "7b": "#81d879",
+        "8": "#b666d2",
+        "9": "#bedc5a",
+        "10": "#dfaf2c",
+        "11": "#582900",
+        "12": "#095228",
+        "13": "#c5deff",
+        "14": "#580073"
+    };
+
+    function loadIdCorrespondences() {
+        return fetch("https://data.ulrichcoudin.com/ids/id_correspondences.json")
+                .then((response) => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error("Une erreur s'est produite lors du chargement du fichier des correspondances d'IDs.");
+                    }
+                })
+                .catch((error) => {
+                    console.log("Une erreur s'est produite lors du chargement des correspondances d'IDs:", error);
+                });
+    }
+
+
+    function getIconUrl(indice_lig) {
+        return "images/" + "m" + indice_lig + ".svg";
+    }
+
+    function createMarker(stationData) {
+        const stationName = stationData.properties.nom_gares;
+        const stationIcon = L.icon({
+            iconUrl: getIconUrl(stationData.properties.indice_lig),
+            iconSize: [32, 32], // Taille de l'icône
+            iconAnchor: [16, 16], // Point d'ancrage de l'icône
+        });
+
+        const marker = L.marker(stationData.geometry.coordinates.reverse(), {
+            icon: stationIcon,
+        });
+
+        marker.bindPopup(stationName);
+        marker.addTo(map);
+    }
+
+
+    function addMetroStationsToMap(data, correspondences) {
+        const lines = {}; // Tableau pour stocker les polylignes par ligne de métro
+        const stationCoordinates = {}; // Dictionnaire des coordonnées des stations
+        const stationLines = {};
+        // Remplissage du dictionnaire des coordonnées des stations
+        data.features.forEach((stationData) => {
+            if (stationData.properties.mode === "METRO") {
+                const stationId = stationData.properties.id_gares;
+                const stationLine = stationData.properties.indice_lig;
+                const coordinates = [
+                    stationData.geometry.coordinates[1],
+                    stationData.geometry.coordinates[0]
+                ];
+
+                stationCoordinates[stationId] = coordinates;
+                stationLines[stationId] = stationLine;
+
+                createMarker(stationData); // Créer un marqueur pour chaque station de métro
+
+            }
+        });
+
+        console.log(stationCoordinates);
+        console.log(stationLines);
+
+        data.features.forEach((stationData) => {
+            if (stationData.properties.mode === "METRO") {
+                const stationId = stationData.properties.id_gares;
+                const stationLigne = stationData.properties.indice_lig;
+
+                for (const stationName in correspondences) { // Pour chaque station de correspondance
+                    if (correspondences.hasOwnProperty(stationName)) { // Si la station de correspondance existe
+                        const correspondence = correspondences[stationName]; // Récupérer les données de la station de correspondance
+                        const correspondenceId = correspondence.id; // Récupérer l'ID de la station de correspondance
+
+                        if (stationId === correspondenceId) { // Si l'ID de la station correspond à l'ID de la station de correspondance
+                            const correspondenceNeighbors = correspondence["voisins"]; // Récupérer les voisins de la station de correspondance
+                            const neighborsCoordinates = []; // Tableau pour stocker les coordonnées des voisins
+
+                            correspondenceNeighbors.forEach((neighborId) => { // Pour chaque voisin de la station de correspondance
+                                if (stationCoordinates.hasOwnProperty(neighborId)) { // Si le voisin existe
+                                    const neighborCoordinates =
+                                            stationCoordinates[neighborId]; // Récupérer les coordonnées du voisin
+                                    neighborsCoordinates.push({
+                                        id: neighborId,
+                                        coordinates: neighborCoordinates
+                                    });
+                                }
+                            });
+
+                            // Les ID correspondent, vous pouvez effectuer des actions avec ces stations
+                            console.log(`ID: ${stationId}`);
+                            console.log("Station Data:", stationData);
+                            console.log("Voisins:", correspondenceNeighbors);
+                            console.log("---");
+
+                            for (i = 0; i < correspondenceNeighbors.length; i++) {
+                                console.log(correspondenceNeighbors[i]);
+                                if (correspondenceNeighbors[i] in stationCoordinates) { // Si le voisin existe
+                                    console.log(
+                                            stationCoordinates[correspondenceNeighbors[i]]
+                                    );
+                                    // Relier les stations entre elles
+                                    const currentCoordinates = stationCoordinates[stationId];
+                                    const neighborCoordinates =
+                                            stationCoordinates[correspondenceNeighbors[i]];
+                                    if (stationLines[correspondenceNeighbors[i]] === stationLines[stationId]) {
+                                        const line = L.polyline(
+                                                [currentCoordinates, neighborCoordinates],
+                                                {color: colors[stationLigne]}
+                                        ).addTo(map);
+
+                                        lines[stationLigne] = line;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            console.log(lines);
+            console.log(stationLines);
+
+        });
+
+        // Ajouter toutes les polylignes à la carte
+        Object.values(lines).forEach((line) => line.addTo(map));
+    }
+
+function displayStationsInPath(data, shortest_path_ids) {
+    const stationCoordinates = {}; // Dictionnaire des coordonnées des stations
+    const stationLines = {};
+    // Remplissage du dictionnaire des coordonnées des stations
+    data.features.forEach((stationData) => {
+        if (stationData.properties.mode === "METRO") {
+            const stationId = stationData.properties.id_gares;
+            const stationLine = stationData.properties.indice_lig;
+            const coordinates = [
+                stationData.geometry.coordinates[1],
+                stationData.geometry.coordinates[0]
+            ];
+            stationLines[stationId] = stationLine;
+            stationCoordinates[stationId] = coordinates;
+
+            if (shortest_path_ids.includes(stationId)) { // Vérifier si la station est dans shortest_path_ids
+                createMarker(stationData); // Créer un marqueur pour chaque station de métro
+            }
+        }
+    });
+
+    const lineCoordinates = [];
+
+    for (let i = 0; i < shortest_path_ids.length - 1; i++) {
+        const sourceId = shortest_path_ids[i];
+        const targetId = shortest_path_ids[i + 1];
+
+        if (stationCoordinates.hasOwnProperty(sourceId) && stationCoordinates.hasOwnProperty(targetId)) {
+            const sourceCoordinates = stationCoordinates[sourceId];
+            const targetCoordinates = stationCoordinates[targetId];
+
+            const sourceLine = stationLines[sourceId];
+            const targetLine = stationLines[targetId];
+
+            const lineColor = colors[sourceLine]; // Obtenir la couleur de la ligne de la prochaine station
+
+            const line = L.polyline([sourceCoordinates, targetCoordinates], { color: lineColor }).addTo(map);
+            lineCoordinates.push(line);
+        }
+    }
+
+    console.log(lineCoordinates);
+}
+
+
+
+function resetMap() {
+    map.removeLayer(map);
+    graphSelected = L.layerGroup().addTo(map);
+}
+
+
+    // Lecture de correspondences.json et data.geojson
+    Promise.all([
+        fetch(
+                "https://data.ulrichcoudin.com/correspondance/correspondences.json"
+        ),
+        fetch("https://data.ulrichcoudin.com/geo/data.geojson")
+    ])
+            .then((responses) => {
+                return Promise.all(
+                        responses.map((response) => {
+                            if (response.ok) {
+                                return response.json();
+                            } else {
+                                throw new Error(
+                                        "Une erreur s'est produite lors du chargement du fichier."
+                                );
+                            }
+                        })
+                );
+            })
+            .then(([correspondences, data]) => {
+                {%if shortest_path != [] %}
+                resetMap();
+                displayStationsInPath(data, {{ shortest_path_ids }})
+                {% else %}
+                addMetroStationsToMap(data, correspondences);
+                {% endif %}
+            })
+            .catch((error) => {
+                console.log("Une erreur s'est produite:", error);
+            });
+
+    var map = L.map("mymap").setView([48.8566, 2.3522], 10);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution:
+                'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+                '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+                'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    }).addTo(map);
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1560 @@
+<!doctype html>
+<html class="no-js" lang="fr">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Recherche" href="search.html" /><link rel="next" title="test_model module" href="test_model.html" /><link rel="prev" title="controller module" href="controller.html" />
+
+    <!-- Generated with Sphinx 7.0.1 and Furo 2023.05.20 -->
+        <title>model module - Documentation RATP Métro+ - SAE 2.01</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=e6660623a769aa55fea372102b9bf3151b292993" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">Documentation RATP Métro+ - SAE 2.01 </div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  
+  <span class="sidebar-brand-text">Documentation RATP Métro+ - SAE 2.01 </span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Recherche" name="q" aria-label="Recherche">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="modules.html">app</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of app</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="controller.html">controller module</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">model module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="test_model.html">test_model module</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="module-model">
+<span id="model-module"></span><h1>model module<a class="headerlink" href="#module-model" title="Lien permanent vers cette rubrique">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="model.Csv">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">model.</span></span><span class="sig-name descname"><span class="pre">Csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#Csv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Csv" title="Lien permanent vers cette définition">#</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Classe Csv permettant de lire un fichier csv</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Csv.lecture_csv_relation">
+<span class="sig-name descname"><span class="pre">lecture_csv_relation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#Csv.lecture_csv_relation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Csv.lecture_csv_relation" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Lire le fichier csv contenant les relations entre les stations</dt><dd><dl class="field-list simple">
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Liste des relations entre les stations</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Csv.lecture_csv_station">
+<span class="sig-name descname"><span class="pre">lecture_csv_station</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#Csv.lecture_csv_station"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Csv.lecture_csv_station" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Lire le fichier csv contenant les stations</dt><dd><dl class="field-list simple">
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Liste des stations</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="model.DisjointSets">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">model.</span></span><span class="sig-name descname"><span class="pre">DisjointSets</span></span><a class="reference internal" href="_modules/model.html#DisjointSets"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.DisjointSets" title="Lien permanent vers cette définition">#</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Classe DisjointSets permettant de créer des ensembles disjoints</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="model.DisjointSets.find_set">
+<span class="sig-name descname"><span class="pre">find_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#DisjointSets.find_set"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.DisjointSets.find_set" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Trouver un ensemble</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param x<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Ensemble à trouver</p>
+</dd>
+<dt class="field-even">type x<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.DisjointSets.make_set">
+<span class="sig-name descname"><span class="pre">make_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#DisjointSets.make_set"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.DisjointSets.make_set" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Créer un ensemble</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param x<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Ensemble à créer</p>
+</dd>
+<dt class="field-even">type x<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.DisjointSets.union">
+<span class="sig-name descname"><span class="pre">union</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#DisjointSets.union"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.DisjointSets.union" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Unir deux ensembles</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param x<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Ensemble à unir</p>
+</dd>
+<dt class="field-even">type x<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">param y<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Ensemble à unir</p>
+</dd>
+<dt class="field-even">type y<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="model.Edge">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">model.</span></span><span class="sig-name descname"><span class="pre">Edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#model.Node" title="model.Node"><span class="pre">Node</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">cible</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#model.Node" title="model.Node"><span class="pre">Node</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">temps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#Edge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Edge" title="Lien permanent vers cette définition">#</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Classe Edge (Relation du graphe) représentant une relation entre deux stations</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Edge.ajouter_edge">
+<span class="sig-name descname"><span class="pre">ajouter_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">relation</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#Edge.ajouter_edge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Edge.ajouter_edge" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Ajouter une relation entre deux stations</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param relation<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Relation entre deux stations</p>
+</dd>
+<dt class="field-even">type relation<span class="colon">:</span></dt>
+<dd class="field-even"><p>Edge</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Edge.get_cible">
+<span class="sig-name descname"><span class="pre">get_cible</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#Edge.get_cible"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Edge.get_cible" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Récupérer la station cible</dt><dd><dl class="field-list simple">
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Station cible</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Edge.get_source">
+<span class="sig-name descname"><span class="pre">get_source</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#Edge.get_source"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Edge.get_source" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Récupérer la station source</dt><dd><dl class="field-list simple">
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Station source</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Edge.get_temps">
+<span class="sig-name descname"><span class="pre">get_temps</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#Edge.get_temps"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Edge.get_temps" title="Lien permanent vers cette définition">#</a></dt>
+<dd><p>Récupérer le temps entre la station source et la station cible
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Edge.set_cible">
+<span class="sig-name descname"><span class="pre">set_cible</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cible</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#Edge.set_cible"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Edge.set_cible" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Modifier la station cible</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param cible<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+<dt class="field-even">type cible<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Edge.set_source">
+<span class="sig-name descname"><span class="pre">set_source</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#Edge.set_source"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Edge.set_source" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Modifier la station source</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param source<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+<dt class="field-even">type source<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Edge.set_temps">
+<span class="sig-name descname"><span class="pre">set_temps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">temps</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#Edge.set_temps"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Edge.set_temps" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Modifier le temps entre la station source et la station cible</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param temps<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+<dt class="field-even">type temps<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Edge.supprimer_edge">
+<span class="sig-name descname"><span class="pre">supprimer_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">relation</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#Edge.supprimer_edge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Edge.supprimer_edge" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Supprimer une relation entre deux stations</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param relation<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+<dt class="field-even">type relation<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="model.Graph">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">model.</span></span><span class="sig-name descname"><span class="pre">Graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#Graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Graph" title="Lien permanent vers cette définition">#</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Classe Graph représentant le graphe des stations</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Graph.add_edge">
+<span class="sig-name descname"><span class="pre">add_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#Graph.add_edge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Graph.add_edge" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Ajouter une relation entre deux stations</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param source<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Station source</p>
+</dd>
+<dt class="field-even">type source<span class="colon">:</span></dt>
+<dd class="field-even"><p>Node</p>
+</dd>
+<dt class="field-odd">param target<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Station cible</p>
+</dd>
+<dt class="field-even">type target<span class="colon">:</span></dt>
+<dd class="field-even"><p>Node</p>
+</dd>
+<dt class="field-odd">param temps<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Temps entre la station source et la station cible</p>
+</dd>
+<dt class="field-even">type temps<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Graph.add_node">
+<span class="sig-name descname"><span class="pre">add_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#model.Node" title="model.Node"><span class="pre">Node</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#Graph.add_node"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Graph.add_node" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Ajouter une station au graphe</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param node<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Station à ajouter</p>
+</dd>
+<dt class="field-even">type node<span class="colon">:</span></dt>
+<dd class="field-even"><p>Node</p>
+</dd>
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Graph.calculate_total_time">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">calculate_total_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/model.html#Graph.calculate_total_time"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Graph.calculate_total_time" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Calcule le temps total d’un chemin</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param path<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Chemin</p>
+</dd>
+<dt class="field-even">type path<span class="colon">:</span></dt>
+<dd class="field-even"><p>List[List[Any]]</p>
+</dd>
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Temps total</p>
+</dd>
+<dt class="field-even">rtype<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Graph.compare_accessibility">
+<span class="sig-name descname"><span class="pre">compare_accessibility</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stationA</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stationB</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/model.html#Graph.compare_accessibility"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Graph.compare_accessibility" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Compare l’accessibilité de deux stations</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param stationA<span class="colon">:</span></dt>
+<dd class="field-odd"><p>id de la station A</p>
+</dd>
+<dt class="field-even">type stationA<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">param stationB<span class="colon">:</span></dt>
+<dd class="field-odd"><p>id de la station B</p>
+</dd>
+<dt class="field-even">type stationB<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>message à afficher</p>
+</dd>
+<dt class="field-even">rtype<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Graph.compare_centralization_stations">
+<span class="sig-name descname"><span class="pre">compare_centralization_stations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">station1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">station2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/model.html#Graph.compare_centralization_stations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Graph.compare_centralization_stations" title="Lien permanent vers cette définition">#</a></dt>
+<dd><p>Compare la centralisation des stations données à p distance (nombre de stations) de la station.
+Retourne un message indiquant la station la plus centrale.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param station1<span class="colon">:</span></dt>
+<dd class="field-odd"><p>id de la station 1</p>
+</dd>
+<dt class="field-even">type station1<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">param station2<span class="colon">:</span></dt>
+<dd class="field-odd"><p>id de la station 2</p>
+</dd>
+<dt class="field-even">type station2<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">param p<span class="colon">:</span></dt>
+<dd class="field-odd"><p>distance</p>
+</dd>
+<dt class="field-even">type p<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>message</p>
+</dd>
+<dt class="field-even">rtype<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Graph.compare_centralization_temps">
+<span class="sig-name descname"><span class="pre">compare_centralization_temps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">station1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">station2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/model.html#Graph.compare_centralization_temps"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Graph.compare_centralization_temps" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Compare la centralisation des deux stations</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param station1<span class="colon">:</span></dt>
+<dd class="field-odd"><p>id de la station 1</p>
+</dd>
+<dt class="field-even">type station1<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">param station2<span class="colon">:</span></dt>
+<dd class="field-odd"><p>id de la station 2</p>
+</dd>
+<dt class="field-even">type station2<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">param p<span class="colon">:</span></dt>
+<dd class="field-odd"><p>temps maximum</p>
+</dd>
+<dt class="field-even">type p<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>message à afficher</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Graph.compare_terminus_proximity">
+<span class="sig-name descname"><span class="pre">compare_terminus_proximity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">station1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">station2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/model.html#Graph.compare_terminus_proximity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Graph.compare_terminus_proximity" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Compare la proximité des deux stations à un terminus</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param station1<span class="colon">:</span></dt>
+<dd class="field-odd"><p>id de la station 1</p>
+</dd>
+<dt class="field-even">type station1<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">param station2<span class="colon">:</span></dt>
+<dd class="field-odd"><p>id de la station 2</p>
+</dd>
+<dt class="field-even">type station2<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>message à afficher</p>
+</dd>
+<dt class="field-even">rtype<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Graph.dijkstra">
+<span class="sig-name descname"><span class="pre">dijkstra</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/model.html#Graph.dijkstra"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Graph.dijkstra" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Algorithme de Dijkstra permettant de trouver le plus court chemin entre deux stations</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param source<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Station source</p>
+</dd>
+<dt class="field-even">type source<span class="colon">:</span></dt>
+<dd class="field-even"><p>Node</p>
+</dd>
+<dt class="field-odd">param target<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Station cible</p>
+</dd>
+<dt class="field-even">type target<span class="colon">:</span></dt>
+<dd class="field-even"><p>Node</p>
+</dd>
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Graph.dijkstra_min_correspondences">
+<span class="sig-name descname"><span class="pre">dijkstra_min_correspondences</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/model.html#Graph.dijkstra_min_correspondences"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Graph.dijkstra_min_correspondences" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Trouve le chemin le plus court entre la source et la destination en utilisant l’algorithme de Dijkstra</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param source<span class="colon">:</span></dt>
+<dd class="field-odd"><p>id de la station source</p>
+</dd>
+<dt class="field-even">type source<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">param target<span class="colon">:</span></dt>
+<dd class="field-odd"><p>id de la station cible</p>
+</dd>
+<dt class="field-even">type target<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Chemin le plus court et temps total</p>
+</dd>
+<dt class="field-even">rtype<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Graph.find_correspondance">
+<span class="sig-name descname"><span class="pre">find_correspondance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">set</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/model.html#Graph.find_correspondance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Graph.find_correspondance" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Retourne l’ensemble des correspondances entre deux lignes</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param line1<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Ligne 1</p>
+</dd>
+<dt class="field-even">param line2<span class="colon">:</span></dt>
+<dd class="field-even"><p>Ligne 2</p>
+</dd>
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Ensemble des correspondances</p>
+</dd>
+<dt class="field-even">rtype<span class="colon">:</span></dt>
+<dd class="field-even"><p>set[int]</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Graph.find_min_spanning_tree">
+<span class="sig-name descname"><span class="pre">find_min_spanning_tree</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="_modules/model.html#Graph.find_min_spanning_tree"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Graph.find_min_spanning_tree" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Trouver l’arbre minimum couvrant du graphe en utilisant l’algorithme de Kruskal</dt><dd><dl class="field-list simple">
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Liste des arêtes de l’arbre minimum couvrant</p>
+</dd>
+<dt class="field-even">rtype<span class="colon">:</span></dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Graph.find_nearest_terminus">
+<span class="sig-name descname"><span class="pre">find_nearest_terminus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">station1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#Graph.find_nearest_terminus"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Graph.find_nearest_terminus" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Trouve le terminus le plus proche de la station donnée</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param station1<span class="colon">:</span></dt>
+<dd class="field-odd"><p>id de la station</p>
+</dd>
+<dt class="field-even">type station1<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>terminus le plus proche et distance</p>
+</dd>
+<dt class="field-even">rtype<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Graph.find_paths">
+<span class="sig-name descname"><span class="pre">find_paths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cible</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/model.html#Graph.find_paths"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Graph.find_paths" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Retourne la liste des chemins entre deux stations</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param source<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Station source</p>
+</dd>
+<dt class="field-even">param cible<span class="colon">:</span></dt>
+<dd class="field-even"><p>Station cible</p>
+</dd>
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Liste des chemins</p>
+</dd>
+<dt class="field-even">rtype<span class="colon">:</span></dt>
+<dd class="field-even"><p>List[List[Any]]</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Graph.find_shortest_path_min_correspondences_with_intermediate">
+<span class="sig-name descname"><span class="pre">find_shortest_path_min_correspondences_with_intermediate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intermediate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="reference internal" href="_modules/model.html#Graph.find_shortest_path_min_correspondences_with_intermediate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Graph.find_shortest_path_min_correspondences_with_intermediate" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Trouve le chemin le plus court entre la source et la destination en passant par une étape intermédiaire</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param source<span class="colon">:</span></dt>
+<dd class="field-odd"><p>id de la station source</p>
+</dd>
+<dt class="field-even">type source<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">param intermediate<span class="colon">:</span></dt>
+<dd class="field-odd"><p>id de la station intermédiaire</p>
+</dd>
+<dt class="field-even">type intermediate<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">param target<span class="colon">:</span></dt>
+<dd class="field-odd"><p>id de la station cible</p>
+</dd>
+<dt class="field-even">type target<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Chemin le plus court et temps total</p>
+</dd>
+<dt class="field-even">rtype<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Graph.find_shortest_path_with_intermediate">
+<span class="sig-name descname"><span class="pre">find_shortest_path_with_intermediate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intermediate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#Graph.find_shortest_path_with_intermediate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Graph.find_shortest_path_with_intermediate" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Trouve le chemin le plus court entre la source et la destination en passant par une étape intermédiaire</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param source<span class="colon">:</span></dt>
+<dd class="field-odd"><p>id de la station source</p>
+</dd>
+<dt class="field-even">type source<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">param intermediate<span class="colon">:</span></dt>
+<dd class="field-odd"><p>id de la station intermédiaire</p>
+</dd>
+<dt class="field-even">type intermediate<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">param target<span class="colon">:</span></dt>
+<dd class="field-odd"><p>id de la station cible</p>
+</dd>
+<dt class="field-even">type target<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Chemin le plus court et temps total</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Graph.get_correspondence_distance">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_correspondence_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">station1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#model.Node" title="model.Node"><span class="pre">Node</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">station2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#model.Node" title="model.Node"><span class="pre">Node</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/model.html#Graph.get_correspondence_distance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Graph.get_correspondence_distance" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Calcule la distance entre deux stations avec correspondance</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param station1<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Première station</p>
+</dd>
+<dt class="field-even">type station1<span class="colon">:</span></dt>
+<dd class="field-even"><p>Node</p>
+</dd>
+<dt class="field-odd">param station2<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Seconde station</p>
+</dd>
+<dt class="field-even">type station2<span class="colon">:</span></dt>
+<dd class="field-even"><p>Node</p>
+</dd>
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Distance</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Graph.get_station_by_id">
+<span class="sig-name descname"><span class="pre">get_station_by_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#model.Node" title="model.Node"><span class="pre">Node</span></a></span></span><a class="reference internal" href="_modules/model.html#Graph.get_station_by_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Graph.get_station_by_id" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Récupère une station à partir de son id</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param id<span class="colon">:</span></dt>
+<dd class="field-odd"><p>id de la station</p>
+</dd>
+<dt class="field-even">type id<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Station</p>
+</dd>
+<dt class="field-even">rtype<span class="colon">:</span></dt>
+<dd class="field-even"><p>Node</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Graph.get_station_id_by_name">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_station_id_by_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stations</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#model.Node" title="model.Node"><span class="pre">Node</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/model.html#Graph.get_station_id_by_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Graph.get_station_id_by_name" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Récupère l’id d’une station à partir de son nom</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param stations<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Liste des stations</p>
+</dd>
+<dt class="field-even">param name<span class="colon">:</span></dt>
+<dd class="field-even"><p>Nom de la station</p>
+</dd>
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>id de la station</p>
+</dd>
+<dt class="field-even">rtype<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Graph.get_station_line_by_id">
+<span class="sig-name descname"><span class="pre">get_station_line_by_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/model.html#Graph.get_station_line_by_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Graph.get_station_line_by_id" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Récupère le numéro de ligne d’une station à partir de son id</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param id<span class="colon">:</span></dt>
+<dd class="field-odd"><p>id de la station</p>
+</dd>
+<dt class="field-even">type id<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Numéro de ligne</p>
+</dd>
+<dt class="field-even">rtype<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Graph.get_station_name_by_id">
+<span class="sig-name descname"><span class="pre">get_station_name_by_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/model.html#Graph.get_station_name_by_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Graph.get_station_name_by_id" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Récupère le nom d’une station à partir de son id</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param id<span class="colon">:</span></dt>
+<dd class="field-odd"><p>id de la station</p>
+</dd>
+<dt class="field-even">type id<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Nom de la station</p>
+</dd>
+<dt class="field-even">rtype<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Graph.get_stations">
+<span class="sig-name descname"><span class="pre">get_stations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#Graph.get_stations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Graph.get_stations" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Obtenir la liste des stations</dt><dd><dl class="field-list simple">
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Liste des stations</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Graph.is_neighbor">
+<span class="sig-name descname"><span class="pre">is_neighbor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/model.html#Graph.is_neighbor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Graph.is_neighbor" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Vérifie si deux stations sont voisines</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param source<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Station source</p>
+</dd>
+<dt class="field-even">type source<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">param target<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Station cible</p>
+</dd>
+<dt class="field-even">type target<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True si les stations sont voisines</p>
+</dd>
+<dt class="field-even">rtype<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Graph.is_path_with_correspondence_shorter">
+<span class="sig-name descname"><span class="pre">is_path_with_correspondence_shorter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">station1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#model.Node" title="model.Node"><span class="pre">Node</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">station2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#model.Node" title="model.Node"><span class="pre">Node</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/model.html#Graph.is_path_with_correspondence_shorter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Graph.is_path_with_correspondence_shorter" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Vérifie si le chemin avec correspondance est plus court que le chemin direct</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param station1<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Station 1</p>
+</dd>
+<dt class="field-even">type station1<span class="colon">:</span></dt>
+<dd class="field-even"><p>Node</p>
+</dd>
+<dt class="field-odd">param station2<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Station 2</p>
+</dd>
+<dt class="field-even">type station2<span class="colon">:</span></dt>
+<dd class="field-even"><p>Node</p>
+</dd>
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True si le chemin avec correspondance est plus court que le chemin direct</p>
+</dd>
+<dt class="field-even">rtype<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Graph.more_accessibility_1station">
+<span class="sig-name descname"><span class="pre">more_accessibility_1station</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">station</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#Graph.more_accessibility_1station"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Graph.more_accessibility_1station" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Retourne la station la plus accessible à partir d’une station</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param station<span class="colon">:</span></dt>
+<dd class="field-odd"><p>id de la station</p>
+</dd>
+<dt class="field-even">type station<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>station la plus accessible et distance</p>
+</dd>
+<dt class="field-even">rtype<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Graph.neighbors_stations">
+<span class="sig-name descname"><span class="pre">neighbors_stations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">station</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#model.Node" title="model.Node"><span class="pre">Node</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/model.html#Graph.neighbors_stations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Graph.neighbors_stations" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Retourne les voisins d’une station</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param station<span class="colon">:</span></dt>
+<dd class="field-odd"><p>id de la station</p>
+</dd>
+<dt class="field-even">type station<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>liste des voisins</p>
+</dd>
+<dt class="field-even">rtype<span class="colon">:</span></dt>
+<dd class="field-even"><p>List[Node]</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Graph.p_distance">
+<span class="sig-name descname"><span class="pre">p_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cible</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/model.html#Graph.p_distance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Graph.p_distance" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Vérifie si la distance entre deux stations est inférieure à une distance donnée</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param source<span class="colon">:</span></dt>
+<dd class="field-odd"><p>id de la station source</p>
+</dd>
+<dt class="field-even">type source<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">param cible<span class="colon">:</span></dt>
+<dd class="field-odd"><p>id de la station cible</p>
+</dd>
+<dt class="field-even">type cible<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">param distance<span class="colon">:</span></dt>
+<dd class="field-odd"><p>distance</p>
+</dd>
+<dt class="field-even">type distance<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True si la distance est inférieure à la distance donnée</p>
+</dd>
+<dt class="field-even">rtype<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Graph.path_message">
+<span class="sig-name descname"><span class="pre">path_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/model.html#Graph.path_message"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Graph.path_message" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Construit le message à partir du chemin</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param path<span class="colon">:</span></dt>
+<dd class="field-odd"><p>chemin</p>
+</dd>
+<dt class="field-even">type path<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>message à afficher</p>
+</dd>
+<dt class="field-even">rtype<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Graph.shortest_path_message">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">shortest_path_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shortest_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/model.html#Graph.shortest_path_message"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Graph.shortest_path_message" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Retourne le message du plus court chemin</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param shortest_path<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Plus court chemin</p>
+</dd>
+<dt class="field-even">type shortest_path<span class="colon">:</span></dt>
+<dd class="field-even"><p>List[List[Any]]</p>
+</dd>
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Message</p>
+</dd>
+<dt class="field-even">rtype<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Graph.shortest_way">
+<span class="sig-name descname"><span class="pre">shortest_way</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="_modules/model.html#Graph.shortest_way"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Graph.shortest_way" title="Lien permanent vers cette définition">#</a></dt>
+<dd><p>Retourne le plus court chemin entre deux stations (liste -&gt; (id de stations (chemin),temps)) grâce à
+l’algorithme de Dijkstra</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param source<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Station source</p>
+</dd>
+<dt class="field-even">type source<span class="colon">:</span></dt>
+<dd class="field-even"><p>Node</p>
+</dd>
+<dt class="field-odd">param target<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Station cible</p>
+</dd>
+<dt class="field-even">type target<span class="colon">:</span></dt>
+<dd class="field-even"><p>Node</p>
+</dd>
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Plus court chemin</p>
+</dd>
+<dt class="field-even">rtype<span class="colon">:</span></dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Graph.stations_list">
+<span class="sig-name descname"><span class="pre">stations_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#model.Node" title="model.Node"><span class="pre">Node</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/model.html#Graph.stations_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Graph.stations_list" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Retourne la liste des stations d’une ligne</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param line<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Ligne</p>
+</dd>
+<dt class="field-even">type line<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Liste des stations</p>
+</dd>
+<dt class="field-even">rtype<span class="colon">:</span></dt>
+<dd class="field-even"><p>List[Node]</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Graph.stations_list_message">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">stations_list_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stations_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#model.Node" title="model.Node"><span class="pre">Node</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/model.html#Graph.stations_list_message"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Graph.stations_list_message" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Retourne le message de la liste des stations</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param stations_list<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+<dt class="field-even">return<span class="colon">:</span></dt>
+<dd class="field-even"><p>Message</p>
+</dd>
+<dt class="field-odd">rtype<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="model.Node">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">model.</span></span><span class="sig-name descname"><span class="pre">Node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nom</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">terminus</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">numligne</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#Node"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Node" title="Lien permanent vers cette définition">#</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Classe Node (Noeud du graphe) représentant une station</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Node.ajouter_station">
+<span class="sig-name descname"><span class="pre">ajouter_station</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">station_node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#Node.ajouter_station"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Node.ajouter_station" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Ajouter une station à la liste des stations</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param station_node<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Station à ajouter</p>
+</dd>
+<dt class="field-even">type station_node<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Node.get_id">
+<span class="sig-name descname"><span class="pre">get_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/model.html#Node.get_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Node.get_id" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Récupérer l’identifiant de la station</dt><dd><dl class="field-list simple">
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Identifiant de la station</p>
+</dd>
+<dt class="field-even">rtype<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Node.get_nom">
+<span class="sig-name descname"><span class="pre">get_nom</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/model.html#Node.get_nom"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Node.get_nom" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Récupérer le nom de la station</dt><dd><dl class="field-list simple">
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Nom de la station</p>
+</dd>
+<dt class="field-even">rtype<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Node.get_numligne">
+<span class="sig-name descname"><span class="pre">get_numligne</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/model.html#Node.get_numligne"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Node.get_numligne" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Récupérer le numéro de la ligne de la station</dt><dd><dl class="field-list simple">
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Numéro de la ligne de la station</p>
+</dd>
+<dt class="field-even">rtype<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Node.get_station">
+<span class="sig-name descname"><span class="pre">get_station</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/model.html#Node.get_station"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Node.get_station" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Récupérer la liste des stations</dt><dd><dl class="field-list simple">
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Liste des stations</p>
+</dd>
+<dt class="field-even">rtype<span class="colon">:</span></dt>
+<dd class="field-even"><p>List[Any]</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Node.get_terminus">
+<span class="sig-name descname"><span class="pre">get_terminus</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/model.html#Node.get_terminus"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Node.get_terminus" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Récupérer le terminus de la station</dt><dd><dl class="field-list simple">
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>true si la station est un terminus, false sinon</p>
+</dd>
+<dt class="field-even">rtype<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Node.set_id">
+<span class="sig-name descname"><span class="pre">set_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#Node.set_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Node.set_id" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Modifier l’identifiant de la station</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param id<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Identifiant de la station</p>
+</dd>
+<dt class="field-even">type id<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Node.set_nom">
+<span class="sig-name descname"><span class="pre">set_nom</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nom</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#Node.set_nom"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Node.set_nom" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Modifier le nom de la station</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param nom<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Nom de la station</p>
+</dd>
+<dt class="field-even">type nom<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Node.set_numligne">
+<span class="sig-name descname"><span class="pre">set_numligne</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">numligne</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#Node.set_numligne"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Node.set_numligne" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Modifier le numéro de la ligne de la station</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param numligne<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numéro de la ligne</p>
+</dd>
+<dt class="field-even">type numligne<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Node.set_station">
+<span class="sig-name descname"><span class="pre">set_station</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">station</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#Node.set_station"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Node.set_station" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Modifier la liste des stations</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param station<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+<dt class="field-even">type station<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Node.set_terminus">
+<span class="sig-name descname"><span class="pre">set_terminus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">terminus</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#Node.set_terminus"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Node.set_terminus" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Modifier le terminus de la station</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param terminus<span class="colon">:</span></dt>
+<dd class="field-odd"><p>true si la station est un terminus, false sinon</p>
+</dd>
+<dt class="field-even">type terminus<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Node.supprimer_station">
+<span class="sig-name descname"><span class="pre">supprimer_station</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">station_node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#Node.supprimer_station"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Node.supprimer_station" title="Lien permanent vers cette définition">#</a></dt>
+<dd><dl class="simple">
+<dt>Supprimer une station de la liste des stations</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param station_node<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Station à supprimer</p>
+</dd>
+<dt class="field-even">type station_node<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="test_model.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">test_model module</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="controller.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">controller module</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2023, COUDIN Ulrich, COQUERELLE Mélissa, LAMARQUE Noé, MOLINIER Hugo
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">model module</a><ul>
+<li><a class="reference internal" href="#model.Csv"><code class="docutils literal notranslate"><span class="pre">Csv</span></code></a><ul>
+<li><a class="reference internal" href="#model.Csv.lecture_csv_relation"><code class="docutils literal notranslate"><span class="pre">Csv.lecture_csv_relation()</span></code></a></li>
+<li><a class="reference internal" href="#model.Csv.lecture_csv_station"><code class="docutils literal notranslate"><span class="pre">Csv.lecture_csv_station()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#model.DisjointSets"><code class="docutils literal notranslate"><span class="pre">DisjointSets</span></code></a><ul>
+<li><a class="reference internal" href="#model.DisjointSets.find_set"><code class="docutils literal notranslate"><span class="pre">DisjointSets.find_set()</span></code></a></li>
+<li><a class="reference internal" href="#model.DisjointSets.make_set"><code class="docutils literal notranslate"><span class="pre">DisjointSets.make_set()</span></code></a></li>
+<li><a class="reference internal" href="#model.DisjointSets.union"><code class="docutils literal notranslate"><span class="pre">DisjointSets.union()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#model.Edge"><code class="docutils literal notranslate"><span class="pre">Edge</span></code></a><ul>
+<li><a class="reference internal" href="#model.Edge.ajouter_edge"><code class="docutils literal notranslate"><span class="pre">Edge.ajouter_edge()</span></code></a></li>
+<li><a class="reference internal" href="#model.Edge.get_cible"><code class="docutils literal notranslate"><span class="pre">Edge.get_cible()</span></code></a></li>
+<li><a class="reference internal" href="#model.Edge.get_source"><code class="docutils literal notranslate"><span class="pre">Edge.get_source()</span></code></a></li>
+<li><a class="reference internal" href="#model.Edge.get_temps"><code class="docutils literal notranslate"><span class="pre">Edge.get_temps()</span></code></a></li>
+<li><a class="reference internal" href="#model.Edge.set_cible"><code class="docutils literal notranslate"><span class="pre">Edge.set_cible()</span></code></a></li>
+<li><a class="reference internal" href="#model.Edge.set_source"><code class="docutils literal notranslate"><span class="pre">Edge.set_source()</span></code></a></li>
+<li><a class="reference internal" href="#model.Edge.set_temps"><code class="docutils literal notranslate"><span class="pre">Edge.set_temps()</span></code></a></li>
+<li><a class="reference internal" href="#model.Edge.supprimer_edge"><code class="docutils literal notranslate"><span class="pre">Edge.supprimer_edge()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#model.Graph"><code class="docutils literal notranslate"><span class="pre">Graph</span></code></a><ul>
+<li><a class="reference internal" href="#model.Graph.add_edge"><code class="docutils literal notranslate"><span class="pre">Graph.add_edge()</span></code></a></li>
+<li><a class="reference internal" href="#model.Graph.add_node"><code class="docutils literal notranslate"><span class="pre">Graph.add_node()</span></code></a></li>
+<li><a class="reference internal" href="#model.Graph.calculate_total_time"><code class="docutils literal notranslate"><span class="pre">Graph.calculate_total_time()</span></code></a></li>
+<li><a class="reference internal" href="#model.Graph.compare_accessibility"><code class="docutils literal notranslate"><span class="pre">Graph.compare_accessibility()</span></code></a></li>
+<li><a class="reference internal" href="#model.Graph.compare_centralization_stations"><code class="docutils literal notranslate"><span class="pre">Graph.compare_centralization_stations()</span></code></a></li>
+<li><a class="reference internal" href="#model.Graph.compare_centralization_temps"><code class="docutils literal notranslate"><span class="pre">Graph.compare_centralization_temps()</span></code></a></li>
+<li><a class="reference internal" href="#model.Graph.compare_terminus_proximity"><code class="docutils literal notranslate"><span class="pre">Graph.compare_terminus_proximity()</span></code></a></li>
+<li><a class="reference internal" href="#model.Graph.dijkstra"><code class="docutils literal notranslate"><span class="pre">Graph.dijkstra()</span></code></a></li>
+<li><a class="reference internal" href="#model.Graph.dijkstra_min_correspondences"><code class="docutils literal notranslate"><span class="pre">Graph.dijkstra_min_correspondences()</span></code></a></li>
+<li><a class="reference internal" href="#model.Graph.find_correspondance"><code class="docutils literal notranslate"><span class="pre">Graph.find_correspondance()</span></code></a></li>
+<li><a class="reference internal" href="#model.Graph.find_min_spanning_tree"><code class="docutils literal notranslate"><span class="pre">Graph.find_min_spanning_tree()</span></code></a></li>
+<li><a class="reference internal" href="#model.Graph.find_nearest_terminus"><code class="docutils literal notranslate"><span class="pre">Graph.find_nearest_terminus()</span></code></a></li>
+<li><a class="reference internal" href="#model.Graph.find_paths"><code class="docutils literal notranslate"><span class="pre">Graph.find_paths()</span></code></a></li>
+<li><a class="reference internal" href="#model.Graph.find_shortest_path_min_correspondences_with_intermediate"><code class="docutils literal notranslate"><span class="pre">Graph.find_shortest_path_min_correspondences_with_intermediate()</span></code></a></li>
+<li><a class="reference internal" href="#model.Graph.find_shortest_path_with_intermediate"><code class="docutils literal notranslate"><span class="pre">Graph.find_shortest_path_with_intermediate()</span></code></a></li>
+<li><a class="reference internal" href="#model.Graph.get_correspondence_distance"><code class="docutils literal notranslate"><span class="pre">Graph.get_correspondence_distance()</span></code></a></li>
+<li><a class="reference internal" href="#model.Graph.get_station_by_id"><code class="docutils literal notranslate"><span class="pre">Graph.get_station_by_id()</span></code></a></li>
+<li><a class="reference internal" href="#model.Graph.get_station_id_by_name"><code class="docutils literal notranslate"><span class="pre">Graph.get_station_id_by_name()</span></code></a></li>
+<li><a class="reference internal" href="#model.Graph.get_station_line_by_id"><code class="docutils literal notranslate"><span class="pre">Graph.get_station_line_by_id()</span></code></a></li>
+<li><a class="reference internal" href="#model.Graph.get_station_name_by_id"><code class="docutils literal notranslate"><span class="pre">Graph.get_station_name_by_id()</span></code></a></li>
+<li><a class="reference internal" href="#model.Graph.get_stations"><code class="docutils literal notranslate"><span class="pre">Graph.get_stations()</span></code></a></li>
+<li><a class="reference internal" href="#model.Graph.is_neighbor"><code class="docutils literal notranslate"><span class="pre">Graph.is_neighbor()</span></code></a></li>
+<li><a class="reference internal" href="#model.Graph.is_path_with_correspondence_shorter"><code class="docutils literal notranslate"><span class="pre">Graph.is_path_with_correspondence_shorter()</span></code></a></li>
+<li><a class="reference internal" href="#model.Graph.more_accessibility_1station"><code class="docutils literal notranslate"><span class="pre">Graph.more_accessibility_1station()</span></code></a></li>
+<li><a class="reference internal" href="#model.Graph.neighbors_stations"><code class="docutils literal notranslate"><span class="pre">Graph.neighbors_stations()</span></code></a></li>
+<li><a class="reference internal" href="#model.Graph.p_distance"><code class="docutils literal notranslate"><span class="pre">Graph.p_distance()</span></code></a></li>
+<li><a class="reference internal" href="#model.Graph.path_message"><code class="docutils literal notranslate"><span class="pre">Graph.path_message()</span></code></a></li>
+<li><a class="reference internal" href="#model.Graph.shortest_path_message"><code class="docutils literal notranslate"><span class="pre">Graph.shortest_path_message()</span></code></a></li>
+<li><a class="reference internal" href="#model.Graph.shortest_way"><code class="docutils literal notranslate"><span class="pre">Graph.shortest_way()</span></code></a></li>
+<li><a class="reference internal" href="#model.Graph.stations_list"><code class="docutils literal notranslate"><span class="pre">Graph.stations_list()</span></code></a></li>
+<li><a class="reference internal" href="#model.Graph.stations_list_message"><code class="docutils literal notranslate"><span class="pre">Graph.stations_list_message()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#model.Node"><code class="docutils literal notranslate"><span class="pre">Node</span></code></a><ul>
+<li><a class="reference internal" href="#model.Node.ajouter_station"><code class="docutils literal notranslate"><span class="pre">Node.ajouter_station()</span></code></a></li>
+<li><a class="reference internal" href="#model.Node.get_id"><code class="docutils literal notranslate"><span class="pre">Node.get_id()</span></code></a></li>
+<li><a class="reference internal" href="#model.Node.get_nom"><code class="docutils literal notranslate"><span class="pre">Node.get_nom()</span></code></a></li>
+<li><a class="reference internal" href="#model.Node.get_numligne"><code class="docutils literal notranslate"><span class="pre">Node.get_numligne()</span></code></a></li>
+<li><a class="reference internal" href="#model.Node.get_station"><code class="docutils literal notranslate"><span class="pre">Node.get_station()</span></code></a></li>
+<li><a class="reference internal" href="#model.Node.get_terminus"><code class="docutils literal notranslate"><span class="pre">Node.get_terminus()</span></code></a></li>
+<li><a class="reference internal" href="#model.Node.set_id"><code class="docutils literal notranslate"><span class="pre">Node.set_id()</span></code></a></li>
+<li><a class="reference internal" href="#model.Node.set_nom"><code class="docutils literal notranslate"><span class="pre">Node.set_nom()</span></code></a></li>
+<li><a class="reference internal" href="#model.Node.set_numligne"><code class="docutils literal notranslate"><span class="pre">Node.set_numligne()</span></code></a></li>
+<li><a class="reference internal" href="#model.Node.set_station"><code class="docutils literal notranslate"><span class="pre">Node.set_station()</span></code></a></li>
+<li><a class="reference internal" href="#model.Node.set_terminus"><code class="docutils literal notranslate"><span class="pre">Node.set_terminus()</span></code></a></li>
+<li><a class="reference internal" href="#model.Node.supprimer_station"><code class="docutils literal notranslate"><span class="pre">Node.supprimer_station()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/scripts/furo.js"></script>
+    <script src="_static/translations.js"></script>
+    </body>
+</html>

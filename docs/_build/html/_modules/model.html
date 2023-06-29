@@ -1,0 +1,1392 @@
+<!doctype html>
+<html class="no-js" lang="fr">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Recherche" href="../search.html" />
+
+    <!-- Generated with Sphinx 7.0.1 and Furo 2023.05.20 -->
+        <title>model - Documentation RATP Métro+ - SAE 2.01</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=e6660623a769aa55fea372102b9bf3151b292993" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">Documentation RATP Métro+ - SAE 2.01 </div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">Documentation RATP Métro+ - SAE 2.01 </span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Recherche" name="q" aria-label="Recherche">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../modules.html">app</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of app</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../controller.html">controller module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model.html">model module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../test_model.html">test_model module</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <h1>Code source de model</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Authors: Ulrich COUDIN, Hugo MOLINIER, Mélissa COQUERELLE, Noé LAMARQUE</span>
+<span class="c1"># Groupe : Ulrich COUDIN, Hugo MOLINIER, Mélissa COQUERELLE, Noé LAMARQUE</span>
+<span class="c1"># Date: 23-06-2023</span>
+<span class="c1"># SAÉ : SAÉ 2.01 - Développement Orienté Objets</span>
+
+<span class="kn">import</span> <span class="nn">csv</span>
+<span class="kn">import</span> <span class="nn">heapq</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span>
+<span class="kn">from</span> <span class="nn">queue</span> <span class="kn">import</span> <span class="n">PriorityQueue</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+
+
+<div class="viewcode-block" id="Node"><a class="viewcode-back" href="../model.html#model.Node">[docs]</a><span class="k">class</span> <span class="nc">Node</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Classe Node (Noeud du graphe) représentant une station</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">nom</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">terminus</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">numligne</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialisation de la station</span>
+<span class="sd">            :param id: Identifiant de la station</span>
+<span class="sd">            :param nom: Nom de la station</span>
+<span class="sd">            :param terminus: true si la station est un terminus, false sinon</span>
+<span class="sd">            :param numligne: numéro de la ligne de la station</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="nb">id</span>  <span class="c1"># Identifiant de la station</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nom</span> <span class="o">=</span> <span class="n">nom</span>  <span class="c1"># Nom de la station</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">terminus</span> <span class="o">=</span> <span class="n">terminus</span>  <span class="c1"># true si la station est un terminus, false sinon</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">numligne</span> <span class="o">=</span> <span class="n">numligne</span>  <span class="c1"># Numéro de la ligne de la station</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">station</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># Liste des stations</span>
+
+<div class="viewcode-block" id="Node.ajouter_station"><a class="viewcode-back" href="../model.html#model.Node.ajouter_station">[docs]</a>    <span class="k">def</span> <span class="nf">ajouter_station</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">station_node</span><span class="p">:</span> <span class="n">Any</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Ajouter une station à la liste des stations</span>
+<span class="sd">            :param station_node:  Station à ajouter</span>
+<span class="sd">            :type station_node: Any</span>
+<span class="sd">            :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">station_node</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">station</span><span class="p">:</span>  <span class="c1"># Vérifier si la station n&#39;est pas déjà dans la liste</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">station</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">station_node</span><span class="p">)</span>  <span class="c1"># Ajouter la station à la liste</span></div>
+
+<div class="viewcode-block" id="Node.supprimer_station"><a class="viewcode-back" href="../model.html#model.Node.supprimer_station">[docs]</a>    <span class="k">def</span> <span class="nf">supprimer_station</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">station_node</span><span class="p">:</span> <span class="n">Any</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Supprimer une station de la liste des stations</span>
+<span class="sd">            :param station_node:  Station à supprimer</span>
+<span class="sd">            :type station_node: Any</span>
+<span class="sd">            :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">station</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">station_node</span><span class="p">)</span>  <span class="c1"># Supprimer la station de la liste</span></div>
+
+<div class="viewcode-block" id="Node.get_id"><a class="viewcode-back" href="../model.html#model.Node.get_id">[docs]</a>    <span class="k">def</span> <span class="nf">get_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Récupérer l&#39;identifiant de la station</span>
+<span class="sd">            :return: Identifiant de la station</span>
+<span class="sd">            :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span></div>
+
+<div class="viewcode-block" id="Node.get_nom"><a class="viewcode-back" href="../model.html#model.Node.get_nom">[docs]</a>    <span class="k">def</span> <span class="nf">get_nom</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Récupérer le nom de la station</span>
+<span class="sd">            :return: Nom de la station</span>
+<span class="sd">            :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">nom</span></div>
+
+<div class="viewcode-block" id="Node.get_terminus"><a class="viewcode-back" href="../model.html#model.Node.get_terminus">[docs]</a>    <span class="k">def</span> <span class="nf">get_terminus</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Récupérer le terminus de la station</span>
+<span class="sd">            :return: true si la station est un terminus, false sinon</span>
+<span class="sd">            :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">terminus</span></div>
+
+<div class="viewcode-block" id="Node.get_numligne"><a class="viewcode-back" href="../model.html#model.Node.get_numligne">[docs]</a>    <span class="k">def</span> <span class="nf">get_numligne</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Récupérer le numéro de la ligne de la station</span>
+<span class="sd">            :return: Numéro de la ligne de la station</span>
+<span class="sd">            :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">numligne</span></div>
+
+<div class="viewcode-block" id="Node.get_station"><a class="viewcode-back" href="../model.html#model.Node.get_station">[docs]</a>    <span class="k">def</span> <span class="nf">get_station</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Récupérer la liste des stations</span>
+<span class="sd">            :return: Liste des stations</span>
+<span class="sd">            :rtype: List[Any]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">station</span></div>
+
+<div class="viewcode-block" id="Node.set_id"><a class="viewcode-back" href="../model.html#model.Node.set_id">[docs]</a>    <span class="k">def</span> <span class="nf">set_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Modifier l&#39;identifiant de la station</span>
+<span class="sd">            :param id:  Identifiant de la station</span>
+<span class="sd">            :type id: int</span>
+<span class="sd">            :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="nb">id</span></div>
+
+<div class="viewcode-block" id="Node.set_nom"><a class="viewcode-back" href="../model.html#model.Node.set_nom">[docs]</a>    <span class="k">def</span> <span class="nf">set_nom</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nom</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Modifier le nom de la station</span>
+<span class="sd">            :param nom:  Nom de la station</span>
+<span class="sd">            :type nom: str</span>
+<span class="sd">            :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nom</span> <span class="o">=</span> <span class="n">nom</span></div>
+
+<div class="viewcode-block" id="Node.set_terminus"><a class="viewcode-back" href="../model.html#model.Node.set_terminus">[docs]</a>    <span class="k">def</span> <span class="nf">set_terminus</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">terminus</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Modifier le terminus de la station</span>
+<span class="sd">            :param terminus:  true si la station est un terminus, false sinon</span>
+<span class="sd">            :type terminus: bool</span>
+<span class="sd">            :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">terminus</span> <span class="o">=</span> <span class="n">terminus</span></div>
+
+<div class="viewcode-block" id="Node.set_numligne"><a class="viewcode-back" href="../model.html#model.Node.set_numligne">[docs]</a>    <span class="k">def</span> <span class="nf">set_numligne</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">numligne</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Modifier le numéro de la ligne de la station</span>
+<span class="sd">            :param numligne: numéro de la ligne</span>
+<span class="sd">            :type numligne: str</span>
+<span class="sd">            :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">numligne</span> <span class="o">=</span> <span class="n">numligne</span></div>
+
+<div class="viewcode-block" id="Node.set_station"><a class="viewcode-back" href="../model.html#model.Node.set_station">[docs]</a>    <span class="k">def</span> <span class="nf">set_station</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">station</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Modifier la liste des stations</span>
+<span class="sd">            :param station:</span>
+<span class="sd">            :type station:</span>
+<span class="sd">            :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">station</span> <span class="o">=</span> <span class="n">station</span></div>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Afficher la station</span>
+<span class="sd">            :return: Affichage de la station</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Station </span><span class="se">{{</span><span class="s2"> id: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">, nom: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2">, terminus: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">terminus</span><span class="si">}</span><span class="s2">, ligne: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">numligne</span><span class="si">}</span><span class="s2"> </span><span class="se">}}</span><span class="s2">&quot;</span></div>
+
+
+<div class="viewcode-block" id="Edge"><a class="viewcode-back" href="../model.html#model.Edge">[docs]</a><span class="k">class</span> <span class="nc">Edge</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Classe Edge (Relation du graphe) représentant une relation entre deux stations</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="n">Node</span><span class="p">,</span> <span class="n">cible</span><span class="p">:</span> <span class="n">Node</span><span class="p">,</span> <span class="n">temps</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialisation de la relation entre deux stations</span>
+<span class="sd">            :param source:  Station source</span>
+<span class="sd">            :type source: Node</span>
+<span class="sd">            :param cible:  Station cible</span>
+<span class="sd">            :type cible: Node</span>
+<span class="sd">            :param temps:  Temps entre la station source et la station cible</span>
+<span class="sd">            :type temps: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="n">source</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cible</span> <span class="o">=</span> <span class="n">cible</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">temps</span> <span class="o">=</span> <span class="n">temps</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">edges</span> <span class="o">=</span> <span class="p">[]</span>
+
+<div class="viewcode-block" id="Edge.ajouter_edge"><a class="viewcode-back" href="../model.html#model.Edge.ajouter_edge">[docs]</a>    <span class="k">def</span> <span class="nf">ajouter_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">relation</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Ajouter une relation entre deux stations</span>
+<span class="sd">            :param relation:  Relation entre deux stations</span>
+<span class="sd">            :type relation: Edge</span>
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">relation</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">edges</span><span class="p">:</span>  <span class="c1"># Vérifier si la relation n&#39;est pas déjà dans la liste</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">edges</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">relation</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Edge.supprimer_edge"><a class="viewcode-back" href="../model.html#model.Edge.supprimer_edge">[docs]</a>    <span class="k">def</span> <span class="nf">supprimer_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">relation</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Supprimer une relation entre deux stations</span>
+<span class="sd">            :param relation:</span>
+<span class="sd">            :type relation:</span>
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">edges</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">relation</span><span class="p">)</span>  <span class="c1"># Supprimer la relation de la liste</span></div>
+
+<div class="viewcode-block" id="Edge.get_source"><a class="viewcode-back" href="../model.html#model.Edge.get_source">[docs]</a>    <span class="k">def</span> <span class="nf">get_source</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Récupérer la station source</span>
+<span class="sd">            :return: Station source</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">source</span></div>
+
+<div class="viewcode-block" id="Edge.get_cible"><a class="viewcode-back" href="../model.html#model.Edge.get_cible">[docs]</a>    <span class="k">def</span> <span class="nf">get_cible</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Récupérer la station cible</span>
+<span class="sd">            :return:  Station cible</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cible</span></div>
+
+<div class="viewcode-block" id="Edge.get_temps"><a class="viewcode-back" href="../model.html#model.Edge.get_temps">[docs]</a>    <span class="k">def</span> <span class="nf">get_temps</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Récupérer le temps entre la station source et la station cible</span>
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">temps</span></div>
+
+<div class="viewcode-block" id="Edge.set_source"><a class="viewcode-back" href="../model.html#model.Edge.set_source">[docs]</a>    <span class="k">def</span> <span class="nf">set_source</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Modifier la station source</span>
+<span class="sd">            :param source:</span>
+<span class="sd">            :type source:</span>
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="n">source</span></div>
+
+<div class="viewcode-block" id="Edge.set_cible"><a class="viewcode-back" href="../model.html#model.Edge.set_cible">[docs]</a>    <span class="k">def</span> <span class="nf">set_cible</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cible</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Modifier la station cible</span>
+<span class="sd">            :param cible:</span>
+<span class="sd">            :type cible:</span>
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cible</span> <span class="o">=</span> <span class="n">cible</span></div>
+
+<div class="viewcode-block" id="Edge.set_temps"><a class="viewcode-back" href="../model.html#model.Edge.set_temps">[docs]</a>    <span class="k">def</span> <span class="nf">set_temps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">temps</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Modifier le temps entre la station source et la station cible</span>
+<span class="sd">            :param temps:</span>
+<span class="sd">            :type temps:</span>
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">temps</span> <span class="o">=</span> <span class="n">temps</span></div>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Afficher la relation entre deux stations</span>
+<span class="sd">            :return: Affichage de la relation entre deux stations</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;[source=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="si">}</span><span class="s2">, cible=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">cible</span><span class="si">}</span><span class="s2">, temps=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">temps</span><span class="si">}</span><span class="s2">]&quot;</span></div>
+
+
+<div class="viewcode-block" id="Csv"><a class="viewcode-back" href="../model.html#model.Csv">[docs]</a><span class="k">class</span> <span class="nc">Csv</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Classe Csv permettant de lire un fichier csv</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialisation de la lecture du fichier csv</span>
+<span class="sd">            :param filename: Nom du fichier csv</span>
+<span class="sd">            :type filename: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stations</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">relations</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="n">filename</span>
+
+<div class="viewcode-block" id="Csv.lecture_csv_station"><a class="viewcode-back" href="../model.html#model.Csv.lecture_csv_station">[docs]</a>    <span class="k">def</span> <span class="nf">lecture_csv_station</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Lire le fichier csv contenant les stations</span>
+<span class="sd">            :return:  Liste des stations</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;data/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>  <span class="c1"># Ouvrir le fichier csv</span>
+            <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">csvfile</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>  <span class="c1"># Lire le fichier csv</span>
+            <span class="nb">next</span><span class="p">(</span><span class="n">reader</span><span class="p">)</span>  <span class="c1"># Ignorer la première ligne</span>
+            <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>  <span class="c1"># Parcourir le fichier csv</span>
+                <span class="n">terminus</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">==</span> <span class="mi">1</span>  <span class="c1"># Vérifier si la station est un terminus</span>
+                <span class="n">station</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">row</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">terminus</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>  <span class="c1"># Créer une station</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">stations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">station</span><span class="p">)</span>  <span class="c1"># Ajouter la station à la liste</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">stations</span>  <span class="c1"># Retourner la liste des stations</span></div>
+
+<div class="viewcode-block" id="Csv.lecture_csv_relation"><a class="viewcode-back" href="../model.html#model.Csv.lecture_csv_relation">[docs]</a>    <span class="k">def</span> <span class="nf">lecture_csv_relation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Lire le fichier csv contenant les relations entre les stations</span>
+<span class="sd">            :return:  Liste des relations entre les stations</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;data/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>  <span class="c1"># Ouvrir le fichier csv</span>
+            <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">csvfile</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>  <span class="c1"># Lire le fichier csv</span>
+            <span class="nb">next</span><span class="p">(</span><span class="n">reader</span><span class="p">)</span>  <span class="c1"># Ignorer la première ligne</span>
+            <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>  <span class="c1"># Parcourir le fichier csv</span>
+                <span class="n">relation</span> <span class="o">=</span> <span class="n">Edge</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>  <span class="c1"># Créer une relation entre deux stations</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">relations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">relation</span><span class="p">)</span>  <span class="c1"># Ajouter la relation à la liste</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">relations</span>  <span class="c1"># Retourner la liste des relations</span></div></div>
+
+
+<div class="viewcode-block" id="DisjointSets"><a class="viewcode-back" href="../model.html#model.DisjointSets">[docs]</a><span class="k">class</span> <span class="nc">DisjointSets</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Classe DisjointSets permettant de créer des ensembles disjoints</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialisation des ensembles disjoints</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># Parent de l&#39;arbre</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># Rang de l&#39;arbre</span>
+
+<div class="viewcode-block" id="DisjointSets.make_set"><a class="viewcode-back" href="../model.html#model.DisjointSets.make_set">[docs]</a>    <span class="k">def</span> <span class="nf">make_set</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Créer un ensemble</span>
+<span class="sd">            :param x: Ensemble à créer</span>
+<span class="sd">            :type x: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span>  <span class="c1"># Le parent de l&#39;arbre est lui-même</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rank</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span></div>
+
+<div class="viewcode-block" id="DisjointSets.find_set"><a class="viewcode-back" href="../model.html#model.DisjointSets.find_set">[docs]</a>    <span class="k">def</span> <span class="nf">find_set</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Trouver un ensemble</span>
+<span class="sd">            :param x: Ensemble à trouver</span>
+<span class="sd">            :type x: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="p">[</span><span class="n">x</span><span class="p">]:</span> <span class="c1"># Vérifier si le parent de l&#39;arbre est lui-même</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="p">[</span><span class="n">x</span><span class="p">])</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="c1"># Retourner le parent de l&#39;arbre</span></div>
+
+<div class="viewcode-block" id="DisjointSets.union"><a class="viewcode-back" href="../model.html#model.DisjointSets.union">[docs]</a>    <span class="k">def</span> <span class="nf">union</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Unir deux ensembles</span>
+<span class="sd">            :param x: Ensemble à unir</span>
+<span class="sd">            :type x: int</span>
+<span class="sd">            :param y: Ensemble à unir</span>
+<span class="sd">            :type y: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">x_root</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_set</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># Trouver le parent de l&#39;arbre</span>
+        <span class="n">y_root</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_set</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="c1"># Trouver le parent de l&#39;arbre</span>
+
+        <span class="k">if</span> <span class="n">x_root</span> <span class="o">==</span> <span class="n">y_root</span><span class="p">:</span> <span class="c1"># Vérifier si les deux parents sont les mêmes</span>
+            <span class="k">return</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span><span class="p">[</span><span class="n">x_root</span><span class="p">]</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span><span class="p">[</span><span class="n">y_root</span><span class="p">]:</span> <span class="c1"># Vérifier si le rang de l&#39;arbre est inférieur</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="p">[</span><span class="n">x_root</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_root</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span><span class="p">[</span><span class="n">x_root</span><span class="p">]</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span><span class="p">[</span><span class="n">y_root</span><span class="p">]:</span> <span class="c1"># Vérifier si le rang de l&#39;arbre est supérieur</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="p">[</span><span class="n">y_root</span><span class="p">]</span> <span class="o">=</span> <span class="n">x_root</span>
+        <span class="k">else</span><span class="p">:</span> <span class="c1"># Vérifier si le rang de l&#39;arbre est égal</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="p">[</span><span class="n">y_root</span><span class="p">]</span> <span class="o">=</span> <span class="n">x_root</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">rank</span><span class="p">[</span><span class="n">x_root</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span></div></div>
+
+
+<div class="viewcode-block" id="Graph"><a class="viewcode-back" href="../model.html#model.Graph">[docs]</a><span class="k">class</span> <span class="nc">Graph</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Classe Graph représentant le graphe des stations</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">direction</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialisation du graphe des stations</span>
+<span class="sd">            :param direction: true si le graphe est orienté, false sinon</span>
+<span class="sd">            :type direction: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stations</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># Liste des stations</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dictionnaire</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># Dictionnaire des relations</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">direction</span> <span class="o">=</span> <span class="n">direction</span>  <span class="c1"># Vérifier si le graphe est orienté</span>
+
+<div class="viewcode-block" id="Graph.add_node"><a class="viewcode-back" href="../model.html#model.Graph.add_node">[docs]</a>    <span class="k">def</span> <span class="nf">add_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">Node</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Ajouter une station au graphe</span>
+<span class="sd">            :param node: Station à ajouter</span>
+<span class="sd">            :type node: Node</span>
+<span class="sd">            :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stations</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">get_id</span><span class="p">(),</span> <span class="n">node</span><span class="p">)</span>  <span class="c1"># Ajouter la station à la liste</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dictionnaire</span><span class="p">[</span><span class="n">node</span><span class="o">.</span><span class="n">get_id</span><span class="p">()]</span> <span class="o">=</span> <span class="p">[]</span></div>
+
+<div class="viewcode-block" id="Graph.add_edge"><a class="viewcode-back" href="../model.html#model.Graph.add_edge">[docs]</a>    <span class="k">def</span> <span class="nf">add_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">temps</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Ajouter une relation entre deux stations</span>
+<span class="sd">            :param source:  Station source</span>
+<span class="sd">            :type source: Node</span>
+<span class="sd">            :param target:  Station cible</span>
+<span class="sd">            :type target: Node</span>
+<span class="sd">            :param temps:  Temps entre la station source et la station cible</span>
+<span class="sd">            :type temps: int</span>
+<span class="sd">            :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">source</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dictionnaire</span><span class="p">:</span>  <span class="c1"># Vérifier si la station source n&#39;est pas dans le dictionnaire</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dictionnaire</span><span class="p">[</span><span class="n">source</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># Ajouter la station source au dictionnaire</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dictionnaire</span><span class="p">[</span><span class="n">source</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Edge</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">temps</span><span class="p">))</span>  <span class="c1"># Ajouter la relation entre les deux stations</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">direction</span><span class="p">:</span>  <span class="c1"># Vérifier si le graphe n&#39;est pas orienté</span>
+            <span class="k">if</span> <span class="n">target</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dictionnaire</span><span class="p">:</span>  <span class="c1"># Vérifier si la station cible n&#39;est pas dans le dictionnaire</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">dictionnaire</span><span class="p">[</span><span class="n">target</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># Ajouter la station cible au dictionnaire</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dictionnaire</span><span class="p">[</span><span class="n">target</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Edge</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">temps</span><span class="p">))</span>  <span class="c1"># Ajouter la relation entre les deux stations</span></div>
+
+<div class="viewcode-block" id="Graph.get_stations"><a class="viewcode-back" href="../model.html#model.Graph.get_stations">[docs]</a>    <span class="k">def</span> <span class="nf">get_stations</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Obtenir la liste des stations</span>
+<span class="sd">            :return: Liste des stations</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">stations</span></div>
+
+<div class="viewcode-block" id="Graph.find_min_spanning_tree"><a class="viewcode-back" href="../model.html#model.Graph.find_min_spanning_tree">[docs]</a>    <span class="k">def</span> <span class="nf">find_min_spanning_tree</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Trouver l&#39;arbre minimum couvrant du graphe en utilisant l&#39;algorithme de Kruskal</span>
+<span class="sd">            :return: Liste des arêtes de l&#39;arbre minimum couvrant</span>
+<span class="sd">            :rtype: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Créer une liste pour stocker les arêtes de l&#39;arbre minimum couvrant</span>
+        <span class="n">min_spanning_tree</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># Créer un ensemble pour stocker les ensembles disjointes des sommets</span>
+        <span class="n">disjoint_sets</span> <span class="o">=</span> <span class="n">DisjointSets</span><span class="p">()</span>
+
+        <span class="c1"># Créer un ensemble pour stocker les sommets du graphe</span>
+        <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">stations</span><span class="p">:</span>
+            <span class="n">disjoint_sets</span><span class="o">.</span><span class="n">make_set</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">get_id</span><span class="p">())</span>
+
+        <span class="c1"># Trier toutes les arêtes du graphe par ordre croissant de poids</span>
+        <span class="n">edges</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">node_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dictionnaire</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dictionnaire</span><span class="p">[</span><span class="n">node_id</span><span class="p">]:</span>
+                <span class="n">edges</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span>
+        <span class="n">edges</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">temps</span><span class="p">)</span>
+
+        <span class="c1"># Parcourir toutes les arêtes triées</span>
+        <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">edges</span><span class="p">:</span>
+            <span class="n">source</span> <span class="o">=</span> <span class="n">edge</span><span class="o">.</span><span class="n">get_source</span><span class="p">()</span>
+            <span class="n">target</span> <span class="o">=</span> <span class="n">edge</span><span class="o">.</span><span class="n">get_cible</span><span class="p">()</span>
+
+            <span class="c1"># Vérifier si l&#39;ajout de l&#39;arête crée un cycle dans l&#39;arbre minimum couvrant</span>
+            <span class="k">if</span> <span class="n">disjoint_sets</span><span class="o">.</span><span class="n">find_set</span><span class="p">(</span><span class="n">source</span><span class="p">)</span> <span class="o">!=</span> <span class="n">disjoint_sets</span><span class="o">.</span><span class="n">find_set</span><span class="p">(</span><span class="n">target</span><span class="p">):</span>
+                <span class="c1"># Les sommets ne sont pas dans le même ensemble, ajouter l&#39;arête à l&#39;arbre minimum couvrant</span>
+                <span class="n">min_spanning_tree</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span>
+
+                <span class="c1"># Fusionner les ensembles des sommets</span>
+                <span class="n">disjoint_sets</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">min_spanning_tree</span></div>
+
+<div class="viewcode-block" id="Graph.dijkstra"><a class="viewcode-back" href="../model.html#model.Graph.dijkstra">[docs]</a>    <span class="k">def</span> <span class="nf">dijkstra</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Algorithme de Dijkstra permettant de trouver le plus court chemin entre deux stations</span>
+<span class="sd">            :param source: Station source</span>
+<span class="sd">            :type source: Node</span>
+<span class="sd">            :param target: Station cible</span>
+<span class="sd">            :type target: Node</span>
+<span class="sd">            :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">distances</span> <span class="o">=</span> <span class="p">{</span><span class="n">node</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dictionnaire</span><span class="p">}</span>  <span class="c1"># Initialiser les distances</span>
+        <span class="n">distances</span><span class="p">[</span><span class="n">source</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Initialiser la distance de la station source à 0</span>
+        <span class="n">previous</span> <span class="o">=</span> <span class="p">{</span><span class="n">node</span><span class="p">:</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dictionnaire</span><span class="p">}</span>  <span class="c1"># Initialiser les nœuds précédents</span>
+
+        <span class="n">queue</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="n">source</span><span class="p">)]</span>  <span class="c1"># Initialiser la file de priorité</span>
+        <span class="n">heapq</span><span class="o">.</span><span class="n">heapify</span><span class="p">(</span><span class="n">queue</span><span class="p">)</span>  <span class="c1"># Créer la file de priorité</span>
+
+        <span class="k">while</span> <span class="n">queue</span><span class="p">:</span>  <span class="c1"># Parcourir la file de priorité</span>
+            <span class="n">current_distance</span><span class="p">,</span> <span class="n">current_node</span> <span class="o">=</span> <span class="n">heapq</span><span class="o">.</span><span class="n">heappop</span><span class="p">(</span><span class="n">queue</span><span class="p">)</span>  <span class="c1"># Récupérer le nœud courant et sa distance</span>
+            <span class="k">if</span> <span class="n">current_node</span> <span class="o">==</span> <span class="n">target</span><span class="p">:</span>  <span class="c1"># Vérifier si le nœud courant est la station cible</span>
+                <span class="c1"># Construire le chemin à partir des nœuds précédents</span>
+                <span class="n">path</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># Initialiser le chemin</span>
+                <span class="k">while</span> <span class="n">current_node</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># Parcourir les nœuds précédents</span>
+                    <span class="n">node_info</span> <span class="o">=</span> <span class="p">[</span><span class="n">current_node</span><span class="p">,</span> <span class="n">distances</span><span class="p">[</span><span class="n">current_node</span><span class="p">]]</span>  <span class="c1"># Récupérer le nœud précédent et sa distance</span>
+                    <span class="n">node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_station_by_id</span><span class="p">(</span><span class="n">current_node</span><span class="p">)</span>  <span class="c1"># Récupérer la station précédente</span>
+                    <span class="n">node_info</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">node</span><span class="o">.</span><span class="n">get_nom</span><span class="p">(),</span> <span class="n">node</span><span class="o">.</span><span class="n">get_numligne</span><span class="p">(),</span> <span class="n">node</span><span class="o">.</span><span class="n">get_terminus</span><span class="p">()])</span>  <span class="c1"># Ajouter les infos</span>
+                    <span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node_info</span><span class="p">)</span>  <span class="c1"># Ajouter le nœud précédent au chemin</span>
+                    <span class="n">current_node</span> <span class="o">=</span> <span class="n">previous</span><span class="p">[</span><span class="n">current_node</span><span class="p">]</span>  <span class="c1"># Récupérer le nœud précédent</span>
+                <span class="n">path</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>  <span class="c1"># Inverser le chemin</span>
+                <span class="k">return</span> <span class="n">path</span>  <span class="c1"># Retourner le chemin</span>
+
+            <span class="k">if</span> <span class="n">current_distance</span> <span class="o">&gt;</span> <span class="n">distances</span><span class="p">[</span><span class="n">current_node</span><span class="p">]:</span>  <span class="c1"># Vérifier si la distance courante est supérieure à la</span>
+                <span class="k">continue</span>
+
+            <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dictionnaire</span><span class="p">[</span><span class="n">current_node</span><span class="p">]:</span>  <span class="c1"># Parcourir les relations du nœud courant</span>
+                <span class="n">neighbor</span> <span class="o">=</span> <span class="n">edge</span><span class="o">.</span><span class="n">cible</span>  <span class="c1"># Récupérer la station cible</span>
+                <span class="n">distance</span> <span class="o">=</span> <span class="n">current_distance</span> <span class="o">+</span> <span class="n">edge</span><span class="o">.</span><span class="n">temps</span>  <span class="c1"># Calculer la distance entre le nœud courant et la station</span>
+                <span class="c1"># cible</span>
+
+                <span class="k">if</span> <span class="n">distance</span> <span class="o">&lt;</span> <span class="n">distances</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]:</span>  <span class="c1"># Vérifier si la distance est inférieure à la distance de la station</span>
+                    <span class="n">distances</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]</span> <span class="o">=</span> <span class="n">distance</span>  <span class="c1"># Mettre à jour la distance de la station</span>
+                    <span class="n">previous</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]</span> <span class="o">=</span> <span class="n">current_node</span>  <span class="c1"># Mettre à jour le nœud précédent</span>
+                    <span class="n">heapq</span><span class="o">.</span><span class="n">heappush</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span> <span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">neighbor</span><span class="p">))</span>  <span class="c1"># Ajouter la station à la file de priorité</span>
+
+        <span class="c1"># Aucun chemin trouvé</span>
+        <span class="k">return</span> <span class="p">[]</span></div>
+
+<div class="viewcode-block" id="Graph.shortest_way"><a class="viewcode-back" href="../model.html#model.Graph.shortest_way">[docs]</a>    <span class="k">def</span> <span class="nf">shortest_way</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retourne le plus court chemin entre deux stations (liste -&gt; (id de stations (chemin),temps)) grâce à</span>
+<span class="sd">        l&#39;algorithme de Dijkstra</span>
+<span class="sd">            :param source: Station source</span>
+<span class="sd">            :type source: Node</span>
+<span class="sd">            :param target: Station cible</span>
+<span class="sd">            :type target: Node</span>
+<span class="sd">            :return: Plus court chemin</span>
+<span class="sd">            :rtype: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">shortest_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dijkstra</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>  <span class="c1"># Plus court chemin</span>
+        <span class="n">total_time</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Temps total du plus court chemin</span>
+        <span class="k">if</span> <span class="n">shortest_path</span><span class="p">:</span>  <span class="c1"># Vérifier si le plus court chemin existe</span>
+            <span class="n">total_time</span> <span class="o">=</span> <span class="n">shortest_path</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># Temps total du plus court chemin</span>
+        <span class="c1"># On garde que les id des stations</span>
+        <span class="n">shortest_path</span> <span class="o">=</span> <span class="p">[</span><span class="n">node</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">shortest_path</span><span class="p">]</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">shortest_path</span><span class="p">,</span> <span class="n">total_time</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="Graph.stations_list"><a class="viewcode-back" href="../model.html#model.Graph.stations_list">[docs]</a>    <span class="k">def</span> <span class="nf">stations_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Node</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retourne la liste des stations d&#39;une ligne</span>
+<span class="sd">            :param line: Ligne</span>
+<span class="sd">            :type line: str</span>
+<span class="sd">            :return:  Liste des stations</span>
+<span class="sd">            :rtype: List[Node]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">stationsList</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># Liste des stations</span>
+        <span class="k">for</span> <span class="n">station</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">stations</span><span class="p">:</span>  <span class="c1"># Parcours des stations</span>
+            <span class="k">if</span> <span class="n">station</span><span class="o">.</span><span class="n">get_numligne</span><span class="p">()</span> <span class="o">==</span> <span class="n">line</span><span class="p">:</span>  <span class="c1"># Si la ligne est la même que celle passée en paramètre</span>
+                <span class="n">stationsList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">station</span><span class="p">)</span>  <span class="c1"># Ajout de la station à la liste</span>
+        <span class="k">return</span> <span class="n">stationsList</span>  <span class="c1"># Retour de la liste des stations</span></div>
+
+<div class="viewcode-block" id="Graph.shortest_path_message"><a class="viewcode-back" href="../model.html#model.Graph.shortest_path_message">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">shortest_path_message</span><span class="p">(</span><span class="n">shortest_path</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retourne le message du plus court chemin</span>
+<span class="sd">            :param shortest_path: Plus court chemin</span>
+<span class="sd">            :type shortest_path: List[List[Any]]</span>
+<span class="sd">            :return: Message</span>
+<span class="sd">            :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>  <span class="c1"># Message</span>
+        <span class="k">for</span> <span class="n">nodeInfo</span> <span class="ow">in</span> <span class="n">shortest_path</span><span class="p">:</span>  <span class="c1"># Parcours du chemin</span>
+            <span class="n">message</span> <span class="o">+=</span> <span class="s2">&quot;Station : &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">nodeInfo</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot; - Ligne : &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">nodeInfo</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot; - Terminus : &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span>
+                <span class="n">nodeInfo</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot; - Temps : &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">nodeInfo</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot; secondes. </span><span class="se">\n</span><span class="s2">&quot;</span>  <span class="c1"># Ajout des informations du sommet</span>
+        <span class="k">return</span> <span class="n">message</span>  <span class="c1"># Retour du message</span></div>
+
+<div class="viewcode-block" id="Graph.stations_list_message"><a class="viewcode-back" href="../model.html#model.Graph.stations_list_message">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">stations_list_message</span><span class="p">(</span><span class="n">stations_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Node</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retourne le message de la liste des stations</span>
+<span class="sd">            :param stations_list:</span>
+<span class="sd">            :return: Message</span>
+<span class="sd">            :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Trier la liste des stations par ID</span>
+        <span class="n">stations_list</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">get_id</span><span class="p">())</span>
+
+        <span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>  <span class="c1"># Message</span>
+        <span class="k">for</span> <span class="n">station</span> <span class="ow">in</span> <span class="n">stations_list</span><span class="p">:</span>  <span class="c1"># Parcours de la liste des stations</span>
+            <span class="n">message</span> <span class="o">+=</span> <span class="s2">&quot;Station : &quot;</span> <span class="o">+</span> <span class="n">station</span><span class="o">.</span><span class="n">get_nom</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot; </span><span class="se">\n</span><span class="s2">&quot;</span>  <span class="c1"># Ajout des informations de la station</span>
+        <span class="k">return</span> <span class="n">message</span>  <span class="c1"># Retour du message</span></div>
+
+<div class="viewcode-block" id="Graph.find_correspondance"><a class="viewcode-back" href="../model.html#model.Graph.find_correspondance">[docs]</a>    <span class="k">def</span> <span class="nf">find_correspondance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line1</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">line2</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">set</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retourne l&#39;ensemble des correspondances entre deux lignes</span>
+<span class="sd">            :param line1: Ligne 1</span>
+<span class="sd">            :param line2: Ligne 2</span>
+<span class="sd">            :return: Ensemble des correspondances</span>
+<span class="sd">            :rtype: set[int]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">correspondance</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>  <span class="c1"># Ensemble des correspondances</span>
+
+        <span class="c1"># Récupération de la liste des stations de la ligne 1</span>
+        <span class="n">stationsLine1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">stations_list</span><span class="p">(</span><span class="n">line1</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">stationsLine1</span><span class="p">)</span>
+        <span class="c1"># Récupération de la liste des stations de la ligne 2</span>
+        <span class="n">stationsLine2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">stations_list</span><span class="p">(</span><span class="n">line2</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">stationsLine2</span><span class="p">)</span>
+        <span class="c1"># Parcours des stations de la ligne 1</span>
+        <span class="k">for</span> <span class="n">stationLine1</span> <span class="ow">in</span> <span class="n">stationsLine1</span><span class="p">:</span>
+            <span class="c1"># Récupération des voisins de la station de la ligne 1</span>
+            <span class="n">neighbors</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dictionnaire</span><span class="p">[</span><span class="n">stationLine1</span><span class="o">.</span><span class="n">get_id</span><span class="p">()]</span>
+
+            <span class="c1"># Parcours des voisins de la station de la ligne 1</span>
+            <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">neighbors</span><span class="p">:</span>
+                <span class="c1"># Récupération de l&#39;id du voisin</span>
+                <span class="n">neighborId</span> <span class="o">=</span> <span class="n">edge</span><span class="o">.</span><span class="n">cible</span>
+
+                <span class="c1"># Vérification si le voisin est une station de la ligne 2</span>
+                <span class="k">for</span> <span class="n">stationLine2</span> <span class="ow">in</span> <span class="n">stationsLine2</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">stationLine2</span><span class="o">.</span><span class="n">get_id</span><span class="p">()</span> <span class="o">==</span> <span class="n">neighborId</span><span class="p">:</span>
+                        <span class="c1"># Ajouter la correspondance à l&#39;ensemble</span>
+                        <span class="n">correspondance</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">stationLine1</span><span class="o">.</span><span class="n">get_id</span><span class="p">())</span>
+                        <span class="n">correspondance</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">stationLine2</span><span class="o">.</span><span class="n">get_id</span><span class="p">())</span>
+                        <span class="k">break</span>
+
+        <span class="k">return</span> <span class="n">correspondance</span></div>
+
+<div class="viewcode-block" id="Graph.find_paths"><a class="viewcode-back" href="../model.html#model.Graph.find_paths">[docs]</a>    <span class="k">def</span> <span class="nf">find_paths</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">cible</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retourne la liste des chemins entre deux stations</span>
+<span class="sd">            :param source: Station source</span>
+<span class="sd">            :param cible: Station cible</span>
+<span class="sd">            :return: Liste des chemins</span>
+<span class="sd">            :rtype: List[List[Any]]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Récupération de la station source</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_station_by_id</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_station_by_id</span><span class="p">(</span><span class="n">cible</span><span class="p">)</span>
+
+        <span class="c1"># Cas 0 : Station A = Station B</span>
+        <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">get_id</span><span class="p">()</span> <span class="o">==</span> <span class="n">c</span><span class="o">.</span><span class="n">get_id</span><span class="p">():</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Les stations de départ et d&#39;arrivée sont identiques.&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="p">[]</span>  <span class="c1"># Retourne une liste vide</span>
+
+        <span class="c1"># Cas 1 : Station A → Station B (voisin)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_neighbor</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">get_id</span><span class="p">(),</span> <span class="n">c</span><span class="o">.</span><span class="n">get_id</span><span class="p">()):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Les stations de départ et d&#39;arrivée sont voisines.&quot;</span><span class="p">)</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dijkstra</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">get_id</span><span class="p">(),</span> <span class="n">c</span><span class="o">.</span><span class="n">get_id</span><span class="p">())</span>
+            <span class="c1"># On affiche le chemin et la durée du trajet;</span>
+            <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shortest_path_message</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dijkstra</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">get_id</span><span class="p">(),</span> <span class="n">c</span><span class="o">.</span><span class="n">get_id</span><span class="p">())))</span>
+            <span class="k">return</span> <span class="p">[</span><span class="n">path</span><span class="p">]</span>
+
+        <span class="c1"># Cas 2 : Station A → Station B (même ligne)</span>
+        <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">get_numligne</span><span class="p">()</span> <span class="o">==</span> <span class="n">c</span><span class="o">.</span><span class="n">get_numligne</span><span class="p">()</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_path_with_correspondence_shorter</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span>
+                <span class="s2">&quot;Les stations de départ et d&#39;arrivée sont sur la même ligne et aucune correspondance n&#39;est nécessaire.&quot;</span><span class="p">)</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dijkstra</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">get_id</span><span class="p">(),</span> <span class="n">c</span><span class="o">.</span><span class="n">get_id</span><span class="p">())</span>
+            <span class="k">return</span> <span class="p">[</span><span class="n">path</span><span class="p">]</span>
+
+        <span class="c1"># Correspondances entre les lignes</span>
+        <span class="n">correspondance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_correspondance</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">get_numligne</span><span class="p">(),</span> <span class="n">c</span><span class="o">.</span><span class="n">get_numligne</span><span class="p">())</span>
+
+        <span class="c1"># Liste des chemins</span>
+        <span class="n">paths</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># Pour chaque correspondance</span>
+        <span class="k">for</span> <span class="n">station</span> <span class="ow">in</span> <span class="n">correspondance</span><span class="p">:</span>
+            <span class="c1"># Récupération de la liste des stations de la ligne 1</span>
+            <span class="n">stationsLine1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">stations_list</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">get_numligne</span><span class="p">())</span>
+
+            <span class="c1"># Récupération de la liste des stations de la ligne 2</span>
+            <span class="n">stationsLine2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">stations_list</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">get_numligne</span><span class="p">())</span>
+
+            <span class="c1"># Estimation du temps de trajet (3 minutes entre deux stations et 6 minutes pour un changement de ligne)</span>
+            <span class="n">estimation</span> <span class="o">=</span> <span class="mi">0</span>
+
+            <span class="c1"># Recherche du chemin le plus court de la source à la station de correspondance</span>
+            <span class="n">path1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dijkstra</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">get_id</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_station_id_by_name</span><span class="p">(</span><span class="n">stationsLine1</span><span class="p">,</span> <span class="n">station</span><span class="p">))</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">path1</span><span class="p">:</span>
+                <span class="k">continue</span>  <span class="c1"># Pas de chemin trouvé, passer à la prochaine correspondance</span>
+            <span class="n">estimation</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">calculate_total_time</span><span class="p">(</span><span class="n">path1</span><span class="p">)</span>
+
+            <span class="c1"># Recherche du chemin le plus court de la station de correspondance à la cible</span>
+            <span class="n">path2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dijkstra</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_station_id_by_name</span><span class="p">(</span><span class="n">stationsLine2</span><span class="p">,</span> <span class="n">station</span><span class="p">),</span> <span class="n">c</span><span class="o">.</span><span class="n">get_id</span><span class="p">())</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">path2</span><span class="p">:</span>
+                <span class="k">continue</span>  <span class="c1"># Pas de chemin trouvé, passer à la prochaine correspondance</span>
+            <span class="n">estimation</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">calculate_total_time</span><span class="p">(</span><span class="n">path2</span><span class="p">)</span>
+
+            <span class="c1"># Ajout du chemin à la liste des chemins</span>
+            <span class="n">pathInfo</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">combinedPath</span> <span class="o">=</span> <span class="p">[]</span>
+
+            <span class="c1"># Ajout des stations du premier chemin (path1) à combinedPath</span>
+            <span class="k">for</span> <span class="n">nodeInfo</span> <span class="ow">in</span> <span class="n">path1</span><span class="p">:</span>
+                <span class="n">combinedPath</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nodeInfo</span><span class="p">)</span>
+
+            <span class="c1"># Ajout des stations du second chemin (path2) à combinedPath, en ignorant la première station (doublon)</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">path2</span><span class="p">)):</span>
+                <span class="n">combinedPath</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">path2</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+            <span class="n">pathInfo</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">combinedPath</span><span class="p">)</span>
+            <span class="n">pathInfo</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">estimation</span><span class="p">)</span>
+            <span class="n">paths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pathInfo</span><span class="p">)</span>
+
+        <span class="c1"># Tri des chemins en fonction du temps estimé</span>
+        <span class="n">paths</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">path</span><span class="p">:</span> <span class="n">path</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+        <span class="c1"># Limiter la liste aux 3 chemins les plus rapides</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">paths</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="n">paths</span> <span class="o">=</span> <span class="n">paths</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+
+        <span class="c1"># Affichage des résultats pour chaque chemin</span>
+        <span class="k">for</span> <span class="n">pathInfo</span> <span class="ow">in</span> <span class="n">paths</span><span class="p">:</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="n">pathInfo</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">combinedPath</span> <span class="o">=</span> <span class="n">pathInfo</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">estimation</span> <span class="o">=</span> <span class="n">pathInfo</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+            <span class="c1"># Affichage du chemin</span>
+            <span class="n">chemin</span> <span class="o">=</span> <span class="s2">&quot;Chemin : &quot;</span>
+            <span class="k">for</span> <span class="n">nodeInfo</span> <span class="ow">in</span> <span class="n">combinedPath</span><span class="p">:</span>
+                <span class="n">chemin</span> <span class="o">+=</span> <span class="n">nodeInfo</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot; -&gt; &quot;</span>
+            <span class="n">chemin</span> <span class="o">=</span> <span class="n">chemin</span><span class="p">[:</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">chemin</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Chemin :&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shortest_path_message</span><span class="p">(</span><span class="n">combinedPath</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Temps estimé : &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">estimation</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; minutes.&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">()</span>
+
+            <span class="c1"># Nombre de stations</span>
+            <span class="n">nbStations</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">combinedPath</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+
+            <span class="c1"># Nombre de correspondances</span>
+            <span class="n">nbCorrespondances</span> <span class="o">=</span> <span class="mi">0</span>
+
+            <span class="c1"># Affichage du nombre de stations et de correspondances</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Nombre de stations : &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">nbStations</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Nombre de correspondances : &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">nbCorrespondances</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">paths</span></div>
+
+<div class="viewcode-block" id="Graph.is_neighbor"><a class="viewcode-back" href="../model.html#model.Graph.is_neighbor">[docs]</a>    <span class="k">def</span> <span class="nf">is_neighbor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Vérifie si deux stations sont voisines</span>
+<span class="sd">            :param source:  Station source</span>
+<span class="sd">            :type source: int</span>
+<span class="sd">            :param target: Station cible</span>
+<span class="sd">            :type target: int</span>
+<span class="sd">            :return: True si les stations sont voisines</span>
+<span class="sd">            :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">source</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dictionnaire</span><span class="p">:</span>  <span class="c1"># Si la station source est dans le dictionnaire</span>
+            <span class="n">edges</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dictionnaire</span><span class="p">[</span><span class="n">source</span><span class="p">]</span>  <span class="c1"># Récupération des arrêtes</span>
+            <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">edges</span><span class="p">:</span>  <span class="c1"># Pour chaque arrête</span>
+                <span class="n">cible</span> <span class="o">=</span> <span class="n">edge</span><span class="o">.</span><span class="n">cible</span>  <span class="c1"># Récupération de la cible</span>
+                <span class="k">if</span> <span class="n">cible</span> <span class="o">==</span> <span class="n">target</span><span class="p">:</span>  <span class="c1"># Si la cible est la station cible</span>
+                    <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">False</span>  <span class="c1"># Sinon, retourne faux</span></div>
+
+<div class="viewcode-block" id="Graph.is_path_with_correspondence_shorter"><a class="viewcode-back" href="../model.html#model.Graph.is_path_with_correspondence_shorter">[docs]</a>    <span class="k">def</span> <span class="nf">is_path_with_correspondence_shorter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">station1</span><span class="p">:</span> <span class="n">Node</span><span class="p">,</span> <span class="n">station2</span><span class="p">:</span> <span class="n">Node</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Vérifie si le chemin avec correspondance est plus court que le chemin direct</span>
+<span class="sd">            :param station1: Station 1</span>
+<span class="sd">            :type station1: Node</span>
+<span class="sd">            :param station2: Station 2</span>
+<span class="sd">            :type station2: Node</span>
+<span class="sd">            :return: True si le chemin avec correspondance est plus court que le chemin direct</span>
+<span class="sd">            :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">directDistance</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">station1</span><span class="o">.</span><span class="n">get_id</span><span class="p">()</span> <span class="o">-</span> <span class="n">station2</span><span class="o">.</span><span class="n">get_id</span><span class="p">())</span> <span class="o">*</span> <span class="mi">3</span>  <span class="c1"># Distance directe</span>
+        <span class="n">correspondanceDistance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_correspondence_distance</span><span class="p">(</span><span class="n">station1</span><span class="p">,</span> <span class="n">station2</span><span class="p">)</span>  <span class="c1"># Distance avec correspondance</span>
+        <span class="k">return</span> <span class="n">directDistance</span> <span class="o">&lt;</span> <span class="n">correspondanceDistance</span>  <span class="c1"># Retourne vrai si la distance directe est plus courte</span></div>
+
+<div class="viewcode-block" id="Graph.get_correspondence_distance"><a class="viewcode-back" href="../model.html#model.Graph.get_correspondence_distance">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_correspondence_distance</span><span class="p">(</span><span class="n">station1</span><span class="p">:</span> <span class="n">Node</span><span class="p">,</span> <span class="n">station2</span><span class="p">:</span> <span class="n">Node</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calcule la distance entre deux stations avec correspondance</span>
+<span class="sd">            :param station1: Première station</span>
+<span class="sd">            :type station1: Node</span>
+<span class="sd">            :param station2: Seconde station</span>
+<span class="sd">            :type station2: Node</span>
+<span class="sd">            :return: Distance</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">directDistance</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">station1</span><span class="o">.</span><span class="n">get_id</span><span class="p">()</span> <span class="o">-</span> <span class="n">station2</span><span class="o">.</span><span class="n">get_id</span><span class="p">())</span>  <span class="c1"># Distance directe</span>
+        <span class="k">return</span> <span class="n">directDistance</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">6</span>  <span class="c1"># Retourne la distance directe + 6 minutes de correspondance</span></div>
+
+<div class="viewcode-block" id="Graph.calculate_total_time"><a class="viewcode-back" href="../model.html#model.Graph.calculate_total_time">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">calculate_total_time</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calcule le temps total d&#39;un chemin</span>
+<span class="sd">            :param path: Chemin</span>
+<span class="sd">            :type path: List[List[Any]]</span>
+<span class="sd">            :return: Temps total</span>
+<span class="sd">            :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">totalTime</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Temps total</span>
+        <span class="n">numStations</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>  <span class="c1"># Nombre de stations</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">numStations</span><span class="p">):</span>  <span class="c1"># Pour chaque station</span>
+            <span class="n">totalTime</span> <span class="o">+=</span> <span class="mi">3</span>
+
+            <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">numStations</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># Si ce n&#39;est pas la dernière station</span>
+                <span class="n">currentNode</span> <span class="o">=</span> <span class="n">path</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>  <span class="c1"># Station actuelle</span>
+                <span class="n">nextNode</span> <span class="o">=</span> <span class="n">path</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>  <span class="c1"># Station suivante</span>
+
+                <span class="k">if</span> <span class="n">currentNode</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="n">nextNode</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span>  <span class="c1"># Si les stations sont sur la même ligne</span>
+                    <span class="n">totalTime</span> <span class="o">+=</span> <span class="mi">6</span>  <span class="c1"># Ajout de 6 minutes de correspondance</span>
+
+        <span class="k">return</span> <span class="n">totalTime</span>  <span class="c1"># Retourne le temps total</span></div>
+
+<div class="viewcode-block" id="Graph.get_station_id_by_name"><a class="viewcode-back" href="../model.html#model.Graph.get_station_id_by_name">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_station_id_by_name</span><span class="p">(</span><span class="n">stations</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Node</span><span class="p">],</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Récupère l&#39;id d&#39;une station à partir de son nom</span>
+<span class="sd">            :param stations: Liste des stations</span>
+<span class="sd">            :param name: Nom de la station</span>
+<span class="sd">            :return: id de la station</span>
+<span class="sd">            :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">station</span> <span class="ow">in</span> <span class="n">stations</span><span class="p">:</span>  <span class="c1"># Pour chaque station</span>
+            <span class="k">if</span> <span class="n">station</span><span class="o">.</span><span class="n">get_nom</span><span class="p">()</span> <span class="o">==</span> <span class="n">name</span><span class="p">:</span>  <span class="c1"># Si le nom de la station est le même que celui recherché</span>
+                <span class="k">return</span> <span class="n">station</span><span class="o">.</span><span class="n">get_id</span><span class="p">()</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>  <span class="c1"># Retourne -1 si la station n&#39;a pas été trouvée</span></div>
+
+<div class="viewcode-block" id="Graph.get_station_by_id"><a class="viewcode-back" href="../model.html#model.Graph.get_station_by_id">[docs]</a>    <span class="k">def</span> <span class="nf">get_station_by_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Node</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Récupère une station à partir de son id</span>
+<span class="sd">            :param id: id de la station</span>
+<span class="sd">            :type id: int</span>
+<span class="sd">            :return:  Station</span>
+<span class="sd">            :rtype: Node</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">station</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">stations</span><span class="p">:</span>  <span class="c1"># Pour chaque station</span>
+            <span class="k">if</span> <span class="n">station</span><span class="o">.</span><span class="n">get_id</span><span class="p">()</span> <span class="o">==</span> <span class="nb">id</span><span class="p">:</span>  <span class="c1"># Si l&#39;id de la station est le même que celui recherché</span>
+                <span class="k">return</span> <span class="n">station</span>
+        <span class="k">return</span> <span class="kc">None</span>  <span class="c1"># Retourne None si la station n&#39;a pas été trouvée</span></div>
+
+<div class="viewcode-block" id="Graph.get_station_name_by_id"><a class="viewcode-back" href="../model.html#model.Graph.get_station_name_by_id">[docs]</a>    <span class="k">def</span> <span class="nf">get_station_name_by_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Récupère le nom d&#39;une station à partir de son id</span>
+<span class="sd">            :param id: id de la station</span>
+<span class="sd">            :type id: int</span>
+<span class="sd">            :return: Nom de la station</span>
+<span class="sd">            :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">station</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">stations</span><span class="p">:</span>  <span class="c1"># Pour chaque station</span>
+            <span class="k">if</span> <span class="n">station</span><span class="o">.</span><span class="n">get_id</span><span class="p">()</span> <span class="o">==</span> <span class="nb">id</span><span class="p">:</span>  <span class="c1"># Si l&#39;id de la station est le même que celui recherché</span>
+                <span class="k">return</span> <span class="n">station</span><span class="o">.</span><span class="n">get_nom</span><span class="p">()</span>
+        <span class="k">return</span> <span class="kc">None</span>  <span class="c1"># Retourne None si la station n&#39;a pas été trouvée</span></div>
+
+<div class="viewcode-block" id="Graph.get_station_line_by_id"><a class="viewcode-back" href="../model.html#model.Graph.get_station_line_by_id">[docs]</a>    <span class="k">def</span> <span class="nf">get_station_line_by_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Récupère le numéro de ligne d&#39;une station à partir de son id</span>
+<span class="sd">            :param id: id de la station</span>
+<span class="sd">            :type id: int</span>
+<span class="sd">            :return:    Numéro de ligne</span>
+<span class="sd">            :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">station</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">stations</span><span class="p">:</span>  <span class="c1"># Pour chaque station</span>
+            <span class="k">if</span> <span class="n">station</span><span class="o">.</span><span class="n">get_id</span><span class="p">()</span> <span class="o">==</span> <span class="nb">id</span><span class="p">:</span>  <span class="c1"># Si l&#39;id de la station est le même que celui recherché</span>
+                <span class="k">return</span> <span class="n">station</span><span class="o">.</span><span class="n">get_numligne</span><span class="p">()</span>  <span class="c1"># Retourne le numéro de ligne</span>
+        <span class="k">return</span> <span class="kc">None</span>  <span class="c1"># Retourne None si la station n&#39;a pas été trouvée</span></div>
+
+<div class="viewcode-block" id="Graph.p_distance"><a class="viewcode-back" href="../model.html#model.Graph.p_distance">[docs]</a>    <span class="k">def</span> <span class="nf">p_distance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">cible</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">distance</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Vérifie si la distance entre deux stations est inférieure à une distance donnée</span>
+<span class="sd">            :param source: id de la station source</span>
+<span class="sd">            :type source: int</span>
+<span class="sd">            :param cible: id de la station cible</span>
+<span class="sd">            :type cible: int</span>
+<span class="sd">            :param distance:  distance</span>
+<span class="sd">            :type distance: int</span>
+<span class="sd">            :return:   True si la distance est inférieure à la distance donnée</span>
+<span class="sd">            :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">source</span> <span class="o">==</span> <span class="n">cible</span><span class="p">:</span>  <span class="c1"># Si les stations sont les mêmes</span>
+            <span class="k">return</span> <span class="n">distance</span> <span class="o">==</span> <span class="mi">0</span>  <span class="c1"># Retourne vrai si la distance est nulle</span>
+
+        <span class="k">if</span> <span class="n">distance</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># Si la distance est négative</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="n">visited</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>  <span class="c1"># Stations visitées</span>
+        <span class="n">queue</span> <span class="o">=</span> <span class="p">[(</span><span class="n">source</span><span class="p">,</span> <span class="mi">0</span><span class="p">)]</span>  <span class="c1"># File d&#39;attente</span>
+
+        <span class="k">while</span> <span class="n">queue</span><span class="p">:</span>  <span class="c1"># Tant que la file d&#39;attente n&#39;est pas vide</span>
+            <span class="n">current_station</span><span class="p">,</span> <span class="n">current_distance</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># Récupération de la station et de la distance</span>
+
+            <span class="k">if</span> <span class="n">current_station</span> <span class="o">==</span> <span class="n">cible</span> <span class="ow">and</span> <span class="n">current_distance</span> <span class="o">==</span> <span class="n">distance</span><span class="p">:</span>  <span class="c1"># Si la station est la cible et que la</span>
+                <span class="c1"># distance est la distance recherchée</span>
+                <span class="k">return</span> <span class="kc">True</span>  <span class="c1"># Retourne vrai</span>
+
+            <span class="k">if</span> <span class="n">current_distance</span> <span class="o">&gt;</span> <span class="n">distance</span><span class="p">:</span>  <span class="c1"># Si la distance est supérieure à la distance recherchée</span>
+                <span class="k">break</span>  <span class="c1"># Arrêt de la boucle</span>
+
+            <span class="k">if</span> <span class="n">current_station</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">visited</span><span class="p">:</span>  <span class="c1"># Si la station n&#39;a pas été visitée</span>
+                <span class="n">visited</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">current_station</span><span class="p">)</span>  <span class="c1"># Ajout de la station aux stations visitées</span>
+
+                <span class="n">neighbors</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dictionnaire</span><span class="p">[</span><span class="n">current_station</span><span class="p">]</span>  <span class="c1"># Récupération des voisins de la station</span>
+                <span class="k">for</span> <span class="n">arc</span> <span class="ow">in</span> <span class="n">neighbors</span><span class="p">:</span>  <span class="c1"># Pour chaque voisin</span>
+                    <span class="n">neighbor_station</span> <span class="o">=</span> <span class="n">arc</span><span class="o">.</span><span class="n">cible</span>  <span class="c1"># Récupération de la station voisine</span>
+                    <span class="n">new_distance</span> <span class="o">=</span> <span class="n">current_distance</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c1"># Calcul de la nouvelle distance</span>
+
+                    <span class="k">if</span> <span class="n">neighbor_station</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">visited</span><span class="p">:</span>  <span class="c1"># Si la station voisine n&#39;a pas été visitée</span>
+                        <span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                            <span class="p">(</span><span class="n">neighbor_station</span><span class="p">,</span> <span class="n">new_distance</span><span class="p">))</span>  <span class="c1"># Ajout de la station voisine à la file d&#39;attente</span>
+        <span class="k">return</span> <span class="kc">False</span>  <span class="c1"># Retourne faux si la distance n&#39;a pas été trouvée</span></div>
+
+<div class="viewcode-block" id="Graph.find_shortest_path_with_intermediate"><a class="viewcode-back" href="../model.html#model.Graph.find_shortest_path_with_intermediate">[docs]</a>    <span class="k">def</span> <span class="nf">find_shortest_path_with_intermediate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">intermediate</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Trouve le chemin le plus court entre la source et la destination en passant par une étape intermédiaire</span>
+<span class="sd">            :param source: id de la station source</span>
+<span class="sd">            :type source: int</span>
+<span class="sd">            :param intermediate:  id de la station intermédiaire</span>
+<span class="sd">            :type intermediate: int</span>
+<span class="sd">            :param target:  id de la station cible</span>
+<span class="sd">            :type target: int</span>
+<span class="sd">            :return:  Chemin le plus court et temps total</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Trouver le chemin le plus court de la source à l&#39;étape intermédiaire</span>
+        <span class="n">shortest_path1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shortest_way</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">intermediate</span><span class="p">)</span>
+
+        <span class="c1"># Trouver le chemin le plus court de l&#39;étape intermédiaire à la destination</span>
+        <span class="n">shortest_path2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shortest_way</span><span class="p">(</span><span class="n">intermediate</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+
+        <span class="c1"># Combiner les deux chemins en un seul</span>
+        <span class="n">combined_path</span> <span class="o">=</span> <span class="n">shortest_path1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">shortest_path2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="c1"># Calculer le temps total du trajet combiné</span>
+        <span class="n">total_time</span> <span class="o">=</span> <span class="n">shortest_path1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">shortest_path2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="c1"># Suppression des doublons</span>
+        <span class="n">combined_path</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">dict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span><span class="n">combined_path</span><span class="p">))</span>
+
+        <span class="c1"># Retourner le chemin combiné et le temps total</span>
+        <span class="k">return</span> <span class="n">combined_path</span><span class="p">,</span> <span class="n">total_time</span></div>
+
+<div class="viewcode-block" id="Graph.find_shortest_path_min_correspondences_with_intermediate"><a class="viewcode-back" href="../model.html#model.Graph.find_shortest_path_min_correspondences_with_intermediate">[docs]</a>    <span class="k">def</span> <span class="nf">find_shortest_path_min_correspondences_with_intermediate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">intermediate</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+                                                                 <span class="n">target</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Trouve le chemin le plus court entre la source et la destination en passant par une étape intermédiaire</span>
+<span class="sd">            :param source: id de la station source</span>
+<span class="sd">            :type source: int</span>
+<span class="sd">            :param intermediate: id de la station intermédiaire</span>
+<span class="sd">            :type intermediate: int</span>
+<span class="sd">            :param target: id de la station cible</span>
+<span class="sd">            :type target: int</span>
+<span class="sd">            :return: Chemin le plus court et temps total</span>
+<span class="sd">            :rtype: tuple</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Trouver le chemin le plus court de la source à l&#39;étape intermédiaire</span>
+        <span class="n">shortest_path1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dijkstra_min_correspondences</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">intermediate</span><span class="p">)</span>
+
+        <span class="c1"># Trouver le chemin le plus court de l&#39;étape intermédiaire à la destination</span>
+        <span class="n">shortest_path2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dijkstra_min_correspondences</span><span class="p">(</span><span class="n">intermediate</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+
+        <span class="c1"># Combiner les deux chemins en un seul</span>
+        <span class="n">combined_path</span> <span class="o">=</span> <span class="n">shortest_path1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">shortest_path2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="c1"># Calculer le temps total du trajet combiné</span>
+        <span class="n">total_time</span> <span class="o">=</span> <span class="n">shortest_path1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">shortest_path2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="c1"># Suppression des doublons</span>
+        <span class="n">combined_path</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">dict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span><span class="n">combined_path</span><span class="p">))</span>
+
+        <span class="c1"># Retourner le chemin combiné et le temps total</span>
+        <span class="k">return</span> <span class="n">combined_path</span><span class="p">,</span> <span class="n">total_time</span></div>
+
+<div class="viewcode-block" id="Graph.dijkstra_min_correspondences"><a class="viewcode-back" href="../model.html#model.Graph.dijkstra_min_correspondences">[docs]</a>    <span class="k">def</span> <span class="nf">dijkstra_min_correspondences</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="nb">int</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Trouve le chemin le plus court entre la source et la destination en utilisant l&#39;algorithme de Dijkstra</span>
+<span class="sd">            :param source: id de la station source</span>
+<span class="sd">            :type source: int</span>
+<span class="sd">            :param target: id de la station cible</span>
+<span class="sd">            :type target: int</span>
+<span class="sd">            :return: Chemin le plus court et temps total</span>
+<span class="sd">            :rtype: tuple</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">distances</span> <span class="o">=</span> <span class="p">{</span><span class="n">node</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dictionnaire</span><span class="p">}</span> <span class="c1"># Initialisation des distances</span>
+        <span class="n">distances</span><span class="p">[</span><span class="n">source</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">previous</span> <span class="o">=</span> <span class="p">{</span><span class="n">node</span><span class="p">:</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dictionnaire</span><span class="p">}</span> <span class="c1"># Initialisation des précédents</span>
+
+        <span class="n">queue</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="n">source</span><span class="p">)]</span>
+        <span class="n">heapq</span><span class="o">.</span><span class="n">heapify</span><span class="p">(</span><span class="n">queue</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">source</span> <span class="o">==</span> <span class="n">target</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[</span><span class="n">source</span><span class="p">],</span> <span class="mi">0</span>
+
+        <span class="k">while</span> <span class="n">queue</span><span class="p">:</span> <span class="c1"># Tant que la file d&#39;attente n&#39;est pas vide</span>
+            <span class="n">current_distance</span><span class="p">,</span> <span class="n">current_node</span> <span class="o">=</span> <span class="n">heapq</span><span class="o">.</span><span class="n">heappop</span><span class="p">(</span><span class="n">queue</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">current_node</span> <span class="o">==</span> <span class="n">target</span><span class="p">:</span>
+                <span class="c1"># Construire le chemin à partir des nœuds précédents</span>
+                <span class="n">path</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">while</span> <span class="n">current_node</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="c1"># Tant que le nœud courant n&#39;est pas nul</span>
+                    <span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current_node</span><span class="p">)</span>
+                    <span class="n">current_node</span> <span class="o">=</span> <span class="n">previous</span><span class="p">[</span><span class="n">current_node</span><span class="p">]</span> <span class="c1"># Récupération du nœud précédent</span>
+                <span class="n">path</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+
+                <span class="n">total_time</span> <span class="o">=</span> <span class="n">distances</span><span class="p">[</span><span class="n">target</span><span class="p">]</span>  <span class="c1"># Temps total</span>
+                <span class="k">return</span> <span class="n">path</span><span class="p">,</span> <span class="n">total_time</span> <span class="o">-</span> <span class="mi">5000</span>
+
+            <span class="k">if</span> <span class="n">current_distance</span> <span class="o">&gt;</span> <span class="n">distances</span><span class="p">[</span><span class="n">current_node</span><span class="p">]:</span>
+                <span class="k">continue</span>
+
+            <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dictionnaire</span><span class="p">[</span><span class="n">current_node</span><span class="p">]:</span>
+                <span class="n">neighbor</span> <span class="o">=</span> <span class="n">edge</span><span class="o">.</span><span class="n">cible</span>
+                <span class="n">distance</span> <span class="o">=</span> <span class="n">current_distance</span> <span class="o">+</span> <span class="n">edge</span><span class="o">.</span><span class="n">temps</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_station_by_id</span><span class="p">(</span><span class="n">neighbor</span><span class="p">)</span><span class="o">.</span><span class="n">get_numligne</span><span class="p">()</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_station_by_id</span><span class="p">(</span>
+                        <span class="n">current_node</span><span class="p">)</span><span class="o">.</span><span class="n">get_numligne</span><span class="p">():</span> <span class="c1"># Si les deux stations ne sont pas sur la même ligne</span>
+                    <span class="n">distance</span> <span class="o">+=</span> <span class="mi">5000</span>
+
+                <span class="k">if</span> <span class="n">distance</span> <span class="o">&lt;</span> <span class="n">distances</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]:</span>
+                    <span class="n">distances</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]</span> <span class="o">=</span> <span class="n">distance</span>
+                    <span class="n">previous</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]</span> <span class="o">=</span> <span class="n">current_node</span>
+                    <span class="n">heapq</span><span class="o">.</span><span class="n">heappush</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span> <span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">neighbor</span><span class="p">))</span>
+
+        <span class="c1"># Aucun chemin trouvé</span>
+        <span class="k">return</span> <span class="p">[],</span> <span class="mi">0</span></div>
+
+<div class="viewcode-block" id="Graph.path_message"><a class="viewcode-back" href="../model.html#model.Graph.path_message">[docs]</a>    <span class="k">def</span> <span class="nf">path_message</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Construit le message à partir du chemin</span>
+<span class="sd">            :param path: chemin</span>
+<span class="sd">            :type path: tuple</span>
+<span class="sd">            :return: message à afficher</span>
+<span class="sd">            :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>  <span class="c1"># Initialisation du message</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">path</span><span class="p">[</span><span class="mi">0</span><span class="p">])):</span>  <span class="c1"># Pour chaque station du chemin</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">path</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># Si c&#39;est la dernière station</span>
+                <span class="n">station_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_station_name_by_id</span><span class="p">(</span><span class="n">path</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">])</span>  <span class="c1"># Récupération du nom de la station</span>
+                <span class="n">station_name</span> <span class="o">=</span> <span class="n">station_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>  <span class="c1"># Remplacement des _ par des espaces</span>
+                <span class="n">message</span> <span class="o">+=</span> <span class="n">station_name</span>  <span class="c1"># Ajout du nom de la station au message</span>
+                <span class="n">message</span> <span class="o">+=</span> <span class="s2">&quot; ( &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">get_station_line_by_id</span><span class="p">(</span><span class="n">path</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">]))</span> <span class="o">+</span> <span class="s2">&quot; )&quot;</span>  <span class="c1"># Ajout de la ligne de la station au message</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">station_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_station_name_by_id</span><span class="p">(</span><span class="n">path</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">])</span>  <span class="c1"># Récupération du nom de la station</span>
+                <span class="n">station_name</span> <span class="o">=</span> <span class="n">station_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>  <span class="c1"># Remplacement des _ par des espaces</span>
+                <span class="n">message</span> <span class="o">+=</span> <span class="n">station_name</span>  <span class="c1"># Ajout du nom de la station au message</span>
+                <span class="n">message</span> <span class="o">+=</span> <span class="s2">&quot; ( &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">get_station_line_by_id</span><span class="p">(</span><span class="n">path</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">]))</span> <span class="o">+</span> <span class="s2">&quot; )&quot;</span>  <span class="c1"># Ajout de la ligne de la station au message</span>
+                <span class="n">message</span> <span class="o">+=</span> <span class="s2">&quot; -&gt; &quot;</span>  <span class="c1"># Ajout d&#39;une flèche au message</span>
+        <span class="n">message</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Temps total : </span><span class="si">{</span><span class="n">path</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> secondes&quot;</span>  <span class="c1"># Ajout du temps total au message</span>
+        <span class="k">return</span> <span class="n">message</span>  <span class="c1"># Retourne le message</span></div>
+
+<div class="viewcode-block" id="Graph.more_accessibility_1station"><a class="viewcode-back" href="../model.html#model.Graph.more_accessibility_1station">[docs]</a>    <span class="k">def</span> <span class="nf">more_accessibility_1station</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">station</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retourne la station la plus accessible à partir d&#39;une station</span>
+<span class="sd">            :param station: id de la station</span>
+<span class="sd">            :type station: int</span>
+<span class="sd">            :return: station la plus accessible et distance</span>
+<span class="sd">            :rtype: tuple</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">List</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># Liste des stations</span>
+        <span class="n">accessibility</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># Station la plus accessible</span>
+        <span class="n">min_distance</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span>  <span class="c1"># Distance minimale</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">15</span><span class="p">):</span>  <span class="c1"># Pour chaque ligne</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_station_by_id</span><span class="p">(</span><span class="n">station</span><span class="p">)</span><span class="o">.</span><span class="n">numligne</span><span class="p">:</span>
+                <span class="n">List</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_correspondance</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_station_by_id</span><span class="p">(</span><span class="n">station</span><span class="p">)</span><span class="o">.</span><span class="n">numligne</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">List</span><span class="p">:</span>  <span class="c1"># Pour chaque station</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">station</span><span class="p">:</span>
+                <span class="n">dijkstra_accessibilité</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dijkstra</span><span class="p">(</span><span class="n">station</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+
+                <span class="n">distance</span> <span class="o">=</span> <span class="n">dijkstra_accessibilité</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">distance</span> <span class="o">&lt;</span> <span class="n">min_distance</span><span class="p">:</span>
+                    <span class="c1"># on garde le terminus le plus proche</span>
+                    <span class="n">min_distance</span> <span class="o">=</span> <span class="n">distance</span>
+                    <span class="n">accessibility</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_station_by_id</span><span class="p">(</span>
+                        <span class="n">dijkstra_accessibilité</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># la station du début de la liste</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">accessibility</span><span class="p">,</span> <span class="n">min_distance</span><span class="p">)</span>  <span class="c1"># Retourne la station la plus accessible et la distance</span></div>
+
+<div class="viewcode-block" id="Graph.compare_accessibility"><a class="viewcode-back" href="../model.html#model.Graph.compare_accessibility">[docs]</a>    <span class="k">def</span> <span class="nf">compare_accessibility</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stationA</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">stationB</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Compare l&#39;accessibilité de deux stations</span>
+<span class="sd">            :param stationA: id de la station A</span>
+<span class="sd">            :type stationA: int</span>
+<span class="sd">            :param stationB: id de la station B</span>
+<span class="sd">            :type stationB: int</span>
+<span class="sd">            :return: message à afficher</span>
+<span class="sd">            :rtype: str</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+        <span class="n">stationB_accessibility</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">more_accessibility_1station</span><span class="p">(</span><span class="n">stationB</span><span class="p">)</span>  <span class="c1"># Accessibilité de la station B</span>
+        <span class="n">stationA_accessibility</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">more_accessibility_1station</span><span class="p">(</span><span class="n">stationA</span><span class="p">)</span>  <span class="c1"># Accessibilité de la station A</span>
+        <span class="k">if</span> <span class="n">stationA_accessibility</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">stationB_accessibility</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>  <span class="c1"># Si l&#39;accessibilité de la station A est meilleure</span>
+            <span class="k">return</span> <span class="s2">&quot;La station &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_station_by_id</span><span class="p">(</span><span class="n">stationA</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot; est plus ACCESSIBLE que la station &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">get_station_by_id</span><span class="p">(</span><span class="n">stationB</span><span class="p">))</span>  <span class="c1"># Retourne le message</span>
+        <span class="k">elif</span> <span class="n">stationA_accessibility</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">stationB_accessibility</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="s2">&quot;La station &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_station_by_id</span><span class="p">(</span><span class="n">stationB</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot; est plus ACCESSIBLE que la station &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">get_station_by_id</span><span class="p">(</span><span class="n">stationA</span><span class="p">))</span>  <span class="c1"># Retourne le message</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;Les deux stations sont autant accessibles l&#39;un que l&#39;autre&quot;</span>  <span class="c1"># Retourne le message</span></div>
+
+<div class="viewcode-block" id="Graph.neighbors_stations"><a class="viewcode-back" href="../model.html#model.Graph.neighbors_stations">[docs]</a>    <span class="k">def</span> <span class="nf">neighbors_stations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">station</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Node</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retourne les voisins d&#39;une station</span>
+<span class="sd">            :param station:  id de la station</span>
+<span class="sd">            :type station: int</span>
+<span class="sd">            :return:  liste des voisins</span>
+<span class="sd">            :rtype: List[Node]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">neighbors</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># Initialisation des voisins</span>
+        <span class="k">for</span> <span class="n">arc</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dictionnaire</span><span class="p">[</span><span class="n">station</span><span class="p">]:</span>  <span class="c1"># Pour chaque arc de la station</span>
+            <span class="n">neighbors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_station_by_id</span><span class="p">(</span><span class="n">arc</span><span class="o">.</span><span class="n">cible</span><span class="p">)</span><span class="o">.</span><span class="n">get_id</span><span class="p">())</span>  <span class="c1"># Ajout du voisin à la liste</span>
+        <span class="k">return</span> <span class="n">neighbors</span>  <span class="c1"># Retourne la liste des voisins</span></div>
+
+<div class="viewcode-block" id="Graph.compare_centralization_temps"><a class="viewcode-back" href="../model.html#model.Graph.compare_centralization_temps">[docs]</a>    <span class="k">def</span> <span class="nf">compare_centralization_temps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">station1</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">station2</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">p</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Compare la centralisation des deux stations</span>
+<span class="sd">            :param station1: id de la station 1</span>
+<span class="sd">            :type station1: int</span>
+<span class="sd">            :param station2: id de la station 2</span>
+<span class="sd">            :type station2: int</span>
+<span class="sd">            :param p: temps maximum</span>
+<span class="sd">            :type p: int</span>
+<span class="sd">            :return: message à afficher</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">count1</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">count2</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">376</span><span class="p">):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dijkstra</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">station1</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">p</span><span class="p">:</span>
+                <span class="n">count1</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dijkstra</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">station2</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">p</span><span class="p">:</span>
+                <span class="n">count2</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">count1</span> <span class="o">&gt;</span> <span class="n">count2</span><span class="p">:</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_station_by_id</span><span class="p">(</span><span class="n">station1</span><span class="p">)</span><span class="o">.</span><span class="n">get_nom</span><span class="p">()</span><span class="si">}</span><span class="s2"> est plus centrale que </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_station_by_id</span><span class="p">(</span><span class="n">station2</span><span class="p">)</span><span class="o">.</span><span class="n">get_nom</span><span class="p">()</span><span class="si">}</span><span class="s2">.&quot;</span>
+        <span class="k">elif</span> <span class="n">count1</span> <span class="o">&lt;</span> <span class="n">count2</span><span class="p">:</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_station_by_id</span><span class="p">(</span><span class="n">station2</span><span class="p">)</span><span class="o">.</span><span class="n">get_nom</span><span class="p">()</span><span class="si">}</span><span class="s2"> est plus centrale que </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_station_by_id</span><span class="p">(</span><span class="n">station1</span><span class="p">)</span><span class="o">.</span><span class="n">get_nom</span><span class="p">()</span><span class="si">}</span><span class="s2">.&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;Les deux stations sont aussi centrales.&quot;</span></div>
+
+<div class="viewcode-block" id="Graph.compare_centralization_stations"><a class="viewcode-back" href="../model.html#model.Graph.compare_centralization_stations">[docs]</a>    <span class="k">def</span> <span class="nf">compare_centralization_stations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">station1</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">station2</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">p</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Compare la centralisation des stations données à p distance (nombre de stations) de la station.</span>
+<span class="sd">        Retourne un message indiquant la station la plus centrale.</span>
+<span class="sd">            :param station1: id de la station 1</span>
+<span class="sd">            :type station1: int</span>
+<span class="sd">            :param station2: id de la station 2</span>
+<span class="sd">            :type station2: int</span>
+<span class="sd">            :param p: distance</span>
+<span class="sd">            :type p: int</span>
+<span class="sd">            :return: message</span>
+<span class="sd">            :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">count1</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">count2</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">376</span><span class="p">):</span>  <span class="c1"># Pour chaque station</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dijkstra</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">station1</span><span class="p">))</span> <span class="o">&lt;=</span> <span class="n">p</span><span class="p">:</span>  <span class="c1"># Si la distance est inférieure à p</span>
+                <span class="n">count1</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dijkstra</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">station2</span><span class="p">))</span> <span class="o">&lt;=</span> <span class="n">p</span><span class="p">:</span>  <span class="c1"># Si la distance est inférieure à p</span>
+                <span class="n">count2</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">count1</span> <span class="o">&gt;</span> <span class="n">count2</span><span class="p">:</span>  <span class="c1"># Si la station 1 est plus centrale</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_station_by_id</span><span class="p">(</span><span class="n">station1</span><span class="p">)</span><span class="o">.</span><span class="n">get_nom</span><span class="p">()</span><span class="si">}</span><span class="s2"> est plus centrale que </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_station_by_id</span><span class="p">(</span><span class="n">station2</span><span class="p">)</span><span class="o">.</span><span class="n">get_nom</span><span class="p">()</span><span class="si">}</span><span class="s2">.&quot;</span>
+        <span class="k">elif</span> <span class="n">count1</span> <span class="o">&lt;</span> <span class="n">count2</span><span class="p">:</span>  <span class="c1"># Si la station 2 est plus centrale</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_station_by_id</span><span class="p">(</span><span class="n">station2</span><span class="p">)</span><span class="o">.</span><span class="n">get_nom</span><span class="p">()</span><span class="si">}</span><span class="s2"> est plus centrale que </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_station_by_id</span><span class="p">(</span><span class="n">station1</span><span class="p">)</span><span class="o">.</span><span class="n">get_nom</span><span class="p">()</span><span class="si">}</span><span class="s2">.&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;Les deux stations sont aussi centrales.&quot;</span></div>
+
+<div class="viewcode-block" id="Graph.compare_terminus_proximity"><a class="viewcode-back" href="../model.html#model.Graph.compare_terminus_proximity">[docs]</a>    <span class="k">def</span> <span class="nf">compare_terminus_proximity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">station1</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">station2</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Compare la proximité des deux stations à un terminus</span>
+<span class="sd">            :param station1: id de la station 1</span>
+<span class="sd">            :type station1: int</span>
+<span class="sd">            :param station2: id de la station 2</span>
+<span class="sd">            :type station2: int</span>
+<span class="sd">            :return: message à afficher</span>
+<span class="sd">            :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">terminus1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_nearest_terminus</span><span class="p">(</span><span class="n">station1</span><span class="p">)</span>  <span class="c1"># Trouve le terminus le plus proche de la station 1</span>
+
+        <span class="n">terminus2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_nearest_terminus</span><span class="p">(</span><span class="n">station2</span><span class="p">)</span>  <span class="c1"># Trouve le terminus le plus proche de la station 2</span>
+        <span class="k">if</span> <span class="n">station1</span> <span class="o">==</span> <span class="n">station2</span><span class="p">:</span>  <span class="c1"># Si les deux stations sont les mêmes</span>
+            <span class="k">return</span> <span class="s2">&quot;Les deux stations sont les mêmes.&quot;</span>
+        <span class="n">station1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_station_by_id</span><span class="p">(</span><span class="n">station1</span><span class="p">)</span>
+        <span class="n">station2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_station_by_id</span><span class="p">(</span><span class="n">station2</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">terminus1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">terminus2</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>  <span class="c1"># Si la distance entre la station 1 et le terminus 1 est plus petite que la</span>
+            <span class="c1"># distance entre la station 2 et le terminus 2</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">station1</span><span class="o">.</span><span class="n">get_nom</span><span class="p">()</span><span class="si">}</span><span class="s2"> est plus proche d&#39;un terminus (</span><span class="si">{</span><span class="n">terminus1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">)que </span><span class="si">{</span><span class="n">station2</span><span class="o">.</span><span class="n">get_nom</span><span class="p">()</span><span class="si">}</span><span class="s2">.&quot;</span>
+        <span class="k">elif</span> <span class="n">terminus1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">terminus2</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>  <span class="c1"># Si la distance entre la station 2 et le terminus 2 est plus petite que la</span>
+            <span class="c1"># distance entre la station 1 et le terminus 1</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">station2</span><span class="o">.</span><span class="n">get_nom</span><span class="p">()</span><span class="si">}</span><span class="s2"> est plus proche d&#39;un terminus (</span><span class="si">{</span><span class="n">terminus2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">) que </span><span class="si">{</span><span class="n">station1</span><span class="o">.</span><span class="n">get_nom</span><span class="p">()</span><span class="si">}</span><span class="s2">.&quot;</span>
+        <span class="k">elif</span> <span class="n">terminus1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">terminus2</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>  <span class="c1"># Si les deux stations sont à la même distance d&#39;un terminus</span>
+            <span class="k">return</span> <span class="s2">&quot;Les deux stations sont également proches d&#39;un terminus.&quot;</span></div>
+
+<div class="viewcode-block" id="Graph.find_nearest_terminus"><a class="viewcode-back" href="../model.html#model.Graph.find_nearest_terminus">[docs]</a>    <span class="k">def</span> <span class="nf">find_nearest_terminus</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">station1</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Trouve le terminus le plus proche de la station donnée</span>
+<span class="sd">            :param station1: id de la station</span>
+<span class="sd">            :type station1: int</span>
+<span class="sd">            :return: terminus le plus proche et distance</span>
+<span class="sd">            :rtype: tuple</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">terminus_stations</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">get_station_by_id</span><span class="p">(</span><span class="n">station</span><span class="p">)</span> <span class="k">for</span> <span class="n">station</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dictionnaire</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">if</span>
+                             <span class="bp">self</span><span class="o">.</span><span class="n">get_station_by_id</span><span class="p">(</span><span class="n">station</span><span class="p">)</span><span class="o">.</span><span class="n">get_terminus</span><span class="p">()]</span>  <span class="c1"># Liste des stations terminus</span>
+        <span class="n">min_distance</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span>  <span class="c1"># distance infinie</span>
+        <span class="n">nearest_terminus</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># terminus le plus proche</span>
+
+        <span class="k">for</span> <span class="n">terminus</span> <span class="ow">in</span> <span class="n">terminus_stations</span><span class="p">:</span>
+            <span class="c1"># pour chaque terminus on fait dijkstra entre la station1 et le terminus</span>
+            <span class="n">dijkstra_terminus</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dijkstra</span><span class="p">(</span><span class="n">terminus</span><span class="o">.</span><span class="n">get_id</span><span class="p">(),</span> <span class="n">station1</span><span class="p">)</span>
+            <span class="n">distance</span> <span class="o">=</span> <span class="n">dijkstra_terminus</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">distance</span> <span class="o">&lt;</span> <span class="n">min_distance</span><span class="p">:</span>
+                <span class="c1"># on garde le terminus le plus proche</span>
+                <span class="n">min_distance</span> <span class="o">=</span> <span class="n">distance</span>
+                <span class="n">nearest_terminus</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_station_by_id</span><span class="p">(</span><span class="n">dijkstra_terminus</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># la station du début de la liste</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">nearest_terminus</span><span class="p">,</span> <span class="n">min_distance</span><span class="p">)</span>  <span class="c1"># retourne le terminus le plus proche et la distance</span></div>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Affichage du graphe</span>
+<span class="sd">            :return: graphe et stations</span>
+<span class="sd">            :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Graphe : </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">dictionnaire</span><span class="si">}</span><span class="s2"> - stations : </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">stations</span><span class="si">}</span><span class="s2">&quot;</span>  <span class="c1"># Retourne le graphe et les stations</span></div>
+</pre></div>
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2023, COUDIN Ulrich, COQUERELLE Mélissa, LAMARQUE Noé, MOLINIER Hugo
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/scripts/furo.js"></script>
+    <script src="../_static/translations.js"></script>
+    </body>
+</html>

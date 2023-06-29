@@ -1,0 +1,738 @@
+<!doctype html>
+<html class="no-js" lang="fr">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Recherche" href="../search.html" />
+
+    <!-- Generated with Sphinx 7.0.1 and Furo 2023.05.20 -->
+        <title>controller - Documentation RATP Métro+ - SAE 2.01</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=e6660623a769aa55fea372102b9bf3151b292993" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">Documentation RATP Métro+ - SAE 2.01 </div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">Documentation RATP Métro+ - SAE 2.01 </span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Recherche" name="q" aria-label="Recherche">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../modules.html">app</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of app</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../controller.html">controller module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model.html">model module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../test_model.html">test_model module</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <h1>Code source de controller</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Authors: Ulrich COUDIN, Hugo MOLINIER</span>
+<span class="c1"># Groupe : Ulrich COUDIN, Hugo MOLINIER, Mélissa COQUERELLE, Noé LAMARQUE</span>
+<span class="c1"># Date: 23-06-2023</span>
+<span class="c1"># SAÉ : SAÉ 2.01 - Développement Orienté Objets</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">render_template</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">send_from_directory</span>
+<span class="kn">from</span> <span class="nn">model</span> <span class="kn">import</span> <span class="n">Csv</span><span class="p">,</span> <span class="n">Graph</span><span class="p">,</span> <span class="n">Node</span><span class="p">,</span> <span class="n">Edge</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">urllib.request</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<span class="c1"># Chargement des données (IDs des stations double version : fichier &#39;data/id_correspondences.json&#39;)</span>
+<div class="viewcode-block" id="load_ids"><a class="viewcode-back" href="../controller.html#controller.load_ids">[docs]</a><span class="k">def</span> <span class="nf">load_ids</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Charge les IDs des stations depuis un fichier JSON</span>
+<span class="sd">        :return: Dictionnaire des IDs des stations</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dictionary</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># Dictionnaire vide</span>
+    <span class="k">try</span><span class="p">:</span>  <span class="c1"># On essaie d&#39;ouvrir le fichier JSON</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data/id_correspondences.json.&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>  <span class="c1"># Ouverture du fichier en lecture</span>
+            <span class="n">dictionary</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>  <span class="c1"># Chargement du fichier JSON dans le dictionnaire</span>
+    <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>  <span class="c1"># Si le fichier n&#39;est pas trouvé</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Le fichier JSON n&#39;a pas été trouvé.&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">json</span><span class="o">.</span><span class="n">JSONDecodeError</span><span class="p">:</span>  <span class="c1"># Si le fichier JSON est mal formaté</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Le fichier JSON est mal formaté.&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">dictionary</span>  <span class="c1"># On retourne le dictionnaire</span></div>
+
+
+<span class="k">try</span><span class="p">:</span>  <span class="c1"># Chargement des données</span>
+    <span class="n">station_csv</span> <span class="o">=</span> <span class="n">Csv</span><span class="p">(</span><span class="s2">&quot;stations.csv&quot;</span><span class="p">)</span>
+    <span class="n">relation_csv</span> <span class="o">=</span> <span class="n">Csv</span><span class="p">(</span><span class="s2">&quot;relations.csv&quot;</span><span class="p">)</span>
+    <span class="n">stations</span> <span class="o">=</span> <span class="n">station_csv</span><span class="o">.</span><span class="n">lecture_csv_station</span><span class="p">()</span>  <span class="c1"># Chargement des stations</span>
+    <span class="n">relations</span> <span class="o">=</span> <span class="n">relation_csv</span><span class="o">.</span><span class="n">lecture_csv_relation</span><span class="p">()</span>  <span class="c1"># Chargement des relations</span>
+    <span class="n">station_ids</span> <span class="o">=</span> <span class="n">load_ids</span><span class="p">()</span>  <span class="c1"># Chargement des IDs des stations</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">station_ids</span><span class="p">)</span>  <span class="c1"># Affichage des IDs des stations</span>
+    <span class="c1"># Construction du graphe</span>
+    <span class="n">graphe_ratp</span> <span class="o">=</span> <span class="n">Graph</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># Graphe non orienté</span>
+    <span class="k">for</span> <span class="n">station</span> <span class="ow">in</span> <span class="n">stations</span><span class="p">:</span>  <span class="c1"># Ajout des stations au graphe</span>
+        <span class="n">graphe_ratp</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">station</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">relation</span> <span class="ow">in</span> <span class="n">relations</span><span class="p">:</span>  <span class="c1"># Ajout des relations au graphe</span>
+        <span class="n">graphe_ratp</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">relation</span><span class="o">.</span><span class="n">source</span><span class="p">,</span> <span class="n">relation</span><span class="o">.</span><span class="n">cible</span><span class="p">,</span> <span class="n">relation</span><span class="o">.</span><span class="n">temps</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>  <span class="c1"># Si une erreur est levée</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Erreur : &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+<span class="k">finally</span><span class="p">:</span>  <span class="c1"># Dans tous les cas</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;OK&quot;</span><span class="p">)</span>
+
+<span class="c1"># Tests</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Chemins les plus courts : </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">graphe_ratp</span><span class="o">.</span><span class="n">find_shortest_path_with_intermediate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">250</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">graphe_ratp</span><span class="o">.</span><span class="n">find_shortest_path_with_intermediate</span><span class="p">(</span><span class="mi">71</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">363</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">graphe_ratp</span><span class="o">.</span><span class="n">find_shortest_path_with_intermediate</span><span class="p">(</span><span class="mi">71</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">363</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Stations voisines (Châtelet) : </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">graphe_ratp</span><span class="o">.</span><span class="n">neighbors_stations</span><span class="p">(</span><span class="mi">71</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Liste de stations (ligne 1) : </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">graphe_ratp</span><span class="o">.</span><span class="n">stations_list</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Chemin le plus court avec le moins de correspondences : </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">min_cor_chat_bast</span> <span class="o">=</span> <span class="n">graphe_ratp</span><span class="o">.</span><span class="n">dijkstra_min_correspondences</span><span class="p">(</span><span class="mi">71</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">graphe_ratp</span><span class="o">.</span><span class="n">path_message</span><span class="p">(</span><span class="n">min_cor_chat_bast</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Correspondances entre deux lignes (ligne 1 et 7): </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">graphe_ratp</span><span class="o">.</span><span class="n">find_correspondance</span><span class="p">(</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;7&quot;</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Station à proximité d&#39;un terminus (comparaison) </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">graphe_ratp</span><span class="o">.</span><span class="n">compare_terminus_proximity</span><span class="p">(</span><span class="mi">364</span><span class="p">,</span><span class="mi">365</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Station accessible (comparaison plus proche d&#39;une correspondance) </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">graphe_ratp</span><span class="o">.</span><span class="n">compare_accessibility</span><span class="p">(</span><span class="mi">148</span><span class="p">,</span> <span class="mi">161</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Station la plus centrale (stations) (comparaison plus de correspondances à p-distance (3 stations) ) </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">graphe_ratp</span><span class="o">.</span><span class="n">compare_centralization_stations</span><span class="p">(</span><span class="mi">71</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Station la plus centrale (temps) (comparaison plus de correspondances à n-secondes (300) </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">graphe_ratp</span><span class="o">.</span><span class="n">compare_centralization_temps</span><span class="p">(</span><span class="mi">71</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">300</span><span class="p">))</span>
+
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Erreur : &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+
+
+<span class="c1"># Images</span>
+<div class="viewcode-block" id="serve_image"><a class="viewcode-back" href="../controller.html#controller.serve_image">[docs]</a><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/images/&lt;path:filename&gt;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">serve_image</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Renvoie lien vers image</span>
+<span class="sd">        :param filename:  nom de l&#39;image</span>
+<span class="sd">        :type filename: str</span>
+<span class="sd">        :return:  lien vers image</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">send_from_directory</span><span class="p">(</span><span class="s1">&#39;static/images&#39;</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="load_id_correspondences"><a class="viewcode-back" href="../controller.html#controller.load_id_correspondences">[docs]</a><span class="k">def</span> <span class="nf">load_id_correspondences</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Charge les correspondances entre les IDs des stations et les noms des stations</span>
+<span class="sd">        :return: Dictionnaire des correspondances</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://data.ulrichcoudin.com/ids/id_correspondences.json&quot;</span>
+    <span class="k">with</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">response</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+        <span class="n">correspondences</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">correspondences</span></div>
+
+
+<span class="c1"># Filtre Jinja pour formater le temps</span>
+<div class="viewcode-block" id="format_time"><a class="viewcode-back" href="../controller.html#controller.format_time">[docs]</a><span class="nd">@app</span><span class="o">.</span><span class="n">template_filter</span><span class="p">(</span><span class="s1">&#39;format_time&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">format_time</span><span class="p">(</span><span class="n">time</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Formate le temps</span>
+<span class="sd">        :param time: Temps à formater</span>
+<span class="sd">        :type time: float</span>
+<span class="sd">        :return:  Temps formaté</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">minutes</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>  <span class="c1"># Partie entière pour les minutes</span>
+    <span class="n">seconds</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">time</span> <span class="o">-</span> <span class="n">minutes</span><span class="p">)</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>  <span class="c1"># Partie décimale pour les secondes</span>
+
+    <span class="c1"># Formater la chaîne de temps</span>
+    <span class="n">time_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">minutes</span><span class="si">}</span><span class="s2"> minutes&quot;</span>
+    <span class="k">if</span> <span class="n">seconds</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">time_str</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">seconds</span><span class="si">}</span><span class="s2"> secondes&quot;</span>
+
+    <span class="k">return</span> <span class="n">time_str</span></div>
+
+
+<span class="c1"># Page d&#39;accueil</span>
+<div class="viewcode-block" id="index"><a class="viewcode-back" href="../controller.html#controller.index">[docs]</a><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">index</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Page d&#39;accueil</span>
+<span class="sd">        :return:  Page d&#39;accueil</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;index.html&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="shortest_path_time"><a class="viewcode-back" href="../controller.html#controller.shortest_path_time">[docs]</a><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/shortest_path_time&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">shortest_path_time</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Page du plus court chemin en temps entre deux stations</span>
+<span class="sd">        :return:  Page du plus court chemin en temps entre deux stations</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">total_time</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">shortest_path</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
+        <span class="c1"># Récupérer les noms des stations à partir du formulaire</span>
+        <span class="n">station1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;station1&#39;</span><span class="p">])</span>
+        <span class="n">station2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;station2&#39;</span><span class="p">])</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># Récupérer les noms des stations à partir de leur ID</span>
+            <span class="n">source</span> <span class="o">=</span> <span class="n">graphe_ratp</span><span class="o">.</span><span class="n">get_station_name_by_id</span><span class="p">(</span><span class="n">station1</span><span class="p">)</span>
+            <span class="n">target</span> <span class="o">=</span> <span class="n">graphe_ratp</span><span class="o">.</span><span class="n">get_station_name_by_id</span><span class="p">(</span><span class="n">station2</span><span class="p">)</span>
+
+            <span class="c1"># Remplacer &quot;_&quot; par des espaces et ajouter la ligne entre parenthèses si disponible</span>
+            <span class="n">source</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
+            <span class="n">target</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
+            <span class="n">line1</span> <span class="o">=</span> <span class="n">graphe_ratp</span><span class="o">.</span><span class="n">get_station_line_by_id</span><span class="p">(</span><span class="n">station1</span><span class="p">)</span>
+            <span class="n">line2</span> <span class="o">=</span> <span class="n">graphe_ratp</span><span class="o">.</span><span class="n">get_station_line_by_id</span><span class="p">(</span><span class="n">station2</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">line1</span><span class="p">:</span>
+                <span class="n">source</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot; (Ligne </span><span class="si">{</span><span class="n">line1</span><span class="si">}</span><span class="s2">)&quot;</span>
+            <span class="k">if</span> <span class="n">line2</span><span class="p">:</span>
+                <span class="n">target</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot; (Ligne </span><span class="si">{</span><span class="n">line2</span><span class="si">}</span><span class="s2">)&quot;</span>
+            <span class="c1"># Calcul du chemin le plus court</span>
+            <span class="n">shortest_path_result</span> <span class="o">=</span> <span class="n">graphe_ratp</span><span class="o">.</span><span class="n">shortest_way</span><span class="p">(</span><span class="n">station1</span><span class="p">,</span> <span class="n">station2</span><span class="p">)</span>
+
+            <span class="n">shortest_path</span> <span class="o">=</span> <span class="n">shortest_path_result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="c1"># On transforme les IDs en noms de stations avec lignes</span>
+            <span class="n">shortest_path_names</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="c1"># Conversion des ids des stations actuelles avec les vrais ids (station_ids)</span>
+            <span class="n">shortest_path_ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">station_ids</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">station_id</span><span class="p">)]</span> <span class="k">for</span> <span class="n">station_id</span> <span class="ow">in</span> <span class="n">shortest_path</span><span class="p">]</span>
+
+            <span class="k">for</span> <span class="n">station_id</span> <span class="ow">in</span> <span class="n">shortest_path</span><span class="p">:</span>
+                <span class="n">station_name</span> <span class="o">=</span> <span class="n">graphe_ratp</span><span class="o">.</span><span class="n">get_station_name_by_id</span><span class="p">(</span><span class="n">station_id</span><span class="p">)</span>
+                <span class="c1"># Remplacer &quot;_&quot; par des espaces et ajouter la ligne entre parenthèses si disponible</span>
+                <span class="n">station_name</span> <span class="o">=</span> <span class="n">station_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="n">graphe_ratp</span><span class="o">.</span><span class="n">get_station_line_by_id</span><span class="p">(</span><span class="n">station_id</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">line</span><span class="p">:</span>
+                    <span class="n">station_name</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot; (Ligne </span><span class="si">{</span><span class="n">line</span><span class="si">}</span><span class="s2">)&quot;</span>
+                <span class="n">shortest_path_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">station_name</span><span class="p">)</span>
+            <span class="n">shortest_path</span> <span class="o">=</span> <span class="n">shortest_path_names</span>
+            <span class="n">total_time</span> <span class="o">=</span> <span class="n">shortest_path_result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="mi">60</span>
+            <span class="c1"># On garde 2 chiffres après la virgule</span>
+            <span class="n">total_time</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">total_time</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Erreur : &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+            <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;shortest_path_time.html&#39;</span><span class="p">,</span> <span class="n">error</span><span class="o">=</span><span class="s2">&quot;Erreur : &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+        <span class="c1"># Rendu du template avec les résultats</span>
+        <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;shortest_path_time.html&#39;</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
+                               <span class="n">shortest_path</span><span class="o">=</span><span class="n">shortest_path</span><span class="p">,</span>
+                               <span class="n">total_time</span><span class="o">=</span><span class="n">total_time</span><span class="p">,</span> <span class="n">stations</span><span class="o">=</span><span class="n">stations</span><span class="p">,</span> <span class="n">shortest_path_ids</span><span class="o">=</span><span class="n">shortest_path_ids</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;shortest_path_time.html&#39;</span><span class="p">,</span> <span class="n">stations</span><span class="o">=</span><span class="n">stations</span><span class="p">,</span> <span class="n">shortest_path</span><span class="o">=</span><span class="n">shortest_path</span><span class="p">,</span>
+                           <span class="n">total_time</span><span class="o">=</span><span class="n">total_time</span><span class="p">,</span> <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="shortest_path_correspondance"><a class="viewcode-back" href="../controller.html#controller.shortest_path_correspondance">[docs]</a><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/shortest_path_correspondance&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">shortest_path_correspondance</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Page du plus court chemin en nombre de correspondances entre deux stations</span>
+<span class="sd">        :return: Page du plus court chemin en nombre de correspondances entre deux stations</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">total_time</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">shortest_path</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
+        <span class="c1"># Récupérer les noms des stations à partir du formulaire</span>
+        <span class="n">station1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;station1&#39;</span><span class="p">])</span>
+        <span class="n">station2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;station2&#39;</span><span class="p">])</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># Récupérer les noms des stations à partir de leur ID</span>
+            <span class="n">source</span> <span class="o">=</span> <span class="n">graphe_ratp</span><span class="o">.</span><span class="n">get_station_name_by_id</span><span class="p">(</span><span class="n">station1</span><span class="p">)</span>
+            <span class="n">target</span> <span class="o">=</span> <span class="n">graphe_ratp</span><span class="o">.</span><span class="n">get_station_name_by_id</span><span class="p">(</span><span class="n">station2</span><span class="p">)</span>
+
+            <span class="c1"># Remplacer &quot;_&quot; par des espaces et ajouter la ligne entre parenthèses si disponible</span>
+            <span class="n">source</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
+            <span class="n">target</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
+            <span class="n">line1</span> <span class="o">=</span> <span class="n">graphe_ratp</span><span class="o">.</span><span class="n">get_station_line_by_id</span><span class="p">(</span><span class="n">station1</span><span class="p">)</span>
+            <span class="n">line2</span> <span class="o">=</span> <span class="n">graphe_ratp</span><span class="o">.</span><span class="n">get_station_line_by_id</span><span class="p">(</span><span class="n">station2</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">line1</span><span class="p">:</span>
+                <span class="n">source</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot; (Ligne </span><span class="si">{</span><span class="n">line1</span><span class="si">}</span><span class="s2">)&quot;</span>
+            <span class="k">if</span> <span class="n">line2</span><span class="p">:</span>
+                <span class="n">target</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot; (Ligne </span><span class="si">{</span><span class="n">line2</span><span class="si">}</span><span class="s2">)&quot;</span>
+            <span class="c1"># Calcul du chemin le plus court</span>
+            <span class="n">shortest_path_result</span> <span class="o">=</span> <span class="n">graphe_ratp</span><span class="o">.</span><span class="n">dijkstra_min_correspondences</span><span class="p">(</span><span class="n">station1</span><span class="p">,</span> <span class="n">station2</span><span class="p">)</span>
+
+            <span class="n">shortest_path</span> <span class="o">=</span> <span class="n">shortest_path_result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="c1"># On transforme les IDs en noms de stations avec lignes</span>
+            <span class="n">shortest_path_names</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="c1"># Conversion des ids des stations actuelles avec les vrais ids (station_ids)</span>
+            <span class="n">shortest_path_ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">station_ids</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">station_id</span><span class="p">)]</span> <span class="k">for</span> <span class="n">station_id</span> <span class="ow">in</span> <span class="n">shortest_path</span><span class="p">]</span>
+
+            <span class="k">for</span> <span class="n">station_id</span> <span class="ow">in</span> <span class="n">shortest_path</span><span class="p">:</span>
+                <span class="n">station_name</span> <span class="o">=</span> <span class="n">graphe_ratp</span><span class="o">.</span><span class="n">get_station_name_by_id</span><span class="p">(</span><span class="n">station_id</span><span class="p">)</span>
+                <span class="c1"># Remplacer &quot;_&quot; par des espaces et ajouter la ligne entre parenthèses si disponible</span>
+                <span class="n">station_name</span> <span class="o">=</span> <span class="n">station_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="n">graphe_ratp</span><span class="o">.</span><span class="n">get_station_line_by_id</span><span class="p">(</span><span class="n">station_id</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">line</span><span class="p">:</span>
+                    <span class="n">station_name</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot; (Ligne </span><span class="si">{</span><span class="n">line</span><span class="si">}</span><span class="s2">)&quot;</span>
+                <span class="n">shortest_path_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">station_name</span><span class="p">)</span>
+            <span class="n">shortest_path</span> <span class="o">=</span> <span class="n">shortest_path_names</span>
+            <span class="n">total_time</span> <span class="o">=</span> <span class="n">shortest_path_result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="mi">60</span>
+            <span class="c1"># On garde 2 chiffres après la virgule</span>
+            <span class="n">total_time</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">total_time</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Erreur : &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+            <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;shortest_path_correspondance.html&#39;</span><span class="p">,</span> <span class="n">error</span><span class="o">=</span><span class="s2">&quot;Erreur : &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+        <span class="c1"># Rendu du template avec les résultats</span>
+        <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;shortest_path_correspondance.html&#39;</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
+                               <span class="n">shortest_path</span><span class="o">=</span><span class="n">shortest_path</span><span class="p">,</span>
+                               <span class="n">total_time</span><span class="o">=</span><span class="n">total_time</span><span class="p">,</span> <span class="n">stations</span><span class="o">=</span><span class="n">stations</span><span class="p">,</span> <span class="n">shortest_path_ids</span><span class="o">=</span><span class="n">shortest_path_ids</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;shortest_path_correspondance.html&#39;</span><span class="p">,</span> <span class="n">stations</span><span class="o">=</span><span class="n">stations</span><span class="p">,</span> <span class="n">shortest_path</span><span class="o">=</span><span class="n">shortest_path</span><span class="p">,</span>
+                           <span class="n">total_time</span><span class="o">=</span><span class="n">total_time</span><span class="p">,</span> <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="shortest_path_time_intermediate"><a class="viewcode-back" href="../controller.html#controller.shortest_path_time_intermediate">[docs]</a><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/shortest_path_time_intermediate&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">shortest_path_time_intermediate</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Page du plus court chemin en temps entre deux stations avec une station intermédiaire</span>
+<span class="sd">        :return: Page du plus court chemin en temps entre deux stations avec une station intermédiaire</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">total_time</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">shortest_path</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
+        <span class="c1"># Récupérer les noms des stations à partir du formulaire</span>
+        <span class="n">station1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;station1&#39;</span><span class="p">])</span>
+        <span class="n">intermediate_s</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;intermediate&#39;</span><span class="p">])</span>
+        <span class="n">station2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;station2&#39;</span><span class="p">])</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># Récupérer les noms des stations à partir de leur ID</span>
+            <span class="n">source</span> <span class="o">=</span> <span class="n">graphe_ratp</span><span class="o">.</span><span class="n">get_station_name_by_id</span><span class="p">(</span><span class="n">station1</span><span class="p">)</span>
+            <span class="n">intermediate</span> <span class="o">=</span> <span class="n">graphe_ratp</span><span class="o">.</span><span class="n">get_station_name_by_id</span><span class="p">(</span><span class="n">intermediate_s</span><span class="p">)</span>
+            <span class="n">target</span> <span class="o">=</span> <span class="n">graphe_ratp</span><span class="o">.</span><span class="n">get_station_name_by_id</span><span class="p">(</span><span class="n">station2</span><span class="p">)</span>
+
+            <span class="c1"># Remplacer &quot;_&quot; par des espaces et ajouter la ligne entre parenthèses si disponible</span>
+            <span class="n">source</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
+            <span class="n">intermediate</span> <span class="o">=</span> <span class="n">intermediate</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
+            <span class="n">target</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
+            <span class="n">line1</span> <span class="o">=</span> <span class="n">graphe_ratp</span><span class="o">.</span><span class="n">get_station_line_by_id</span><span class="p">(</span><span class="n">station1</span><span class="p">)</span>
+            <span class="n">line_intermediate</span> <span class="o">=</span> <span class="n">graphe_ratp</span><span class="o">.</span><span class="n">get_station_line_by_id</span><span class="p">(</span><span class="n">intermediate_s</span><span class="p">)</span>
+            <span class="n">line2</span> <span class="o">=</span> <span class="n">graphe_ratp</span><span class="o">.</span><span class="n">get_station_line_by_id</span><span class="p">(</span><span class="n">station2</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">line1</span><span class="p">:</span>
+                <span class="n">source</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot; (Ligne </span><span class="si">{</span><span class="n">line1</span><span class="si">}</span><span class="s2">)&quot;</span>
+            <span class="k">if</span> <span class="n">line2</span><span class="p">:</span>
+                <span class="n">target</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot; (Ligne </span><span class="si">{</span><span class="n">line2</span><span class="si">}</span><span class="s2">)&quot;</span>
+            <span class="k">if</span> <span class="n">line_intermediate</span><span class="p">:</span>
+                <span class="n">intermediate</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot; (Ligne </span><span class="si">{</span><span class="n">line_intermediate</span><span class="si">}</span><span class="s2">)&quot;</span>
+            <span class="c1"># Calcul du chemin le plus court</span>
+            <span class="n">shortest_path_result</span> <span class="o">=</span> <span class="n">graphe_ratp</span><span class="o">.</span><span class="n">find_shortest_path_with_intermediate</span><span class="p">(</span><span class="n">station1</span><span class="p">,</span> <span class="n">intermediate_s</span><span class="p">,</span> <span class="n">station2</span><span class="p">)</span>
+
+            <span class="n">shortest_path</span> <span class="o">=</span> <span class="n">shortest_path_result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="c1"># On transforme les IDs en noms de stations avec lignes</span>
+            <span class="n">shortest_path_names</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="c1"># Conversion des ids des stations actuelles avec les vrais ids (station_ids)</span>
+            <span class="n">shortest_path_ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">station_ids</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">station_id</span><span class="p">)]</span> <span class="k">for</span> <span class="n">station_id</span> <span class="ow">in</span> <span class="n">shortest_path</span><span class="p">]</span>
+
+            <span class="k">for</span> <span class="n">station_id</span> <span class="ow">in</span> <span class="n">shortest_path</span><span class="p">:</span>
+                <span class="n">station_name</span> <span class="o">=</span> <span class="n">graphe_ratp</span><span class="o">.</span><span class="n">get_station_name_by_id</span><span class="p">(</span><span class="n">station_id</span><span class="p">)</span>
+                <span class="c1"># Remplacer &quot;_&quot; par des espaces et ajouter la ligne entre parenthèses si disponible</span>
+                <span class="n">station_name</span> <span class="o">=</span> <span class="n">station_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="n">graphe_ratp</span><span class="o">.</span><span class="n">get_station_line_by_id</span><span class="p">(</span><span class="n">station_id</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">line</span><span class="p">:</span>
+                    <span class="n">station_name</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot; (Ligne </span><span class="si">{</span><span class="n">line</span><span class="si">}</span><span class="s2">)&quot;</span>
+                <span class="n">shortest_path_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">station_name</span><span class="p">)</span>
+            <span class="n">shortest_path</span> <span class="o">=</span> <span class="n">shortest_path_names</span>
+            <span class="n">total_time</span> <span class="o">=</span> <span class="n">shortest_path_result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="mi">60</span>
+            <span class="c1"># On garde 2 chiffres après la virgule</span>
+            <span class="n">total_time</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">total_time</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Erreur : &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+            <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;shortest_path_time_intermediate.html&#39;</span><span class="p">,</span> <span class="n">error</span><span class="o">=</span><span class="s2">&quot;Erreur : &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+        <span class="c1"># Rendu du template avec les résultats</span>
+        <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;shortest_path_time_intermediate.html&#39;</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
+                               <span class="n">intermediate</span><span class="o">=</span><span class="n">intermediate</span><span class="p">,</span> <span class="n">shortest_path</span><span class="o">=</span><span class="n">shortest_path</span><span class="p">,</span>
+                               <span class="n">total_time</span><span class="o">=</span><span class="n">total_time</span><span class="p">,</span> <span class="n">stations</span><span class="o">=</span><span class="n">stations</span><span class="p">,</span> <span class="n">shortest_path_ids</span><span class="o">=</span><span class="n">shortest_path_ids</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;shortest_path_time_intermediate.html&#39;</span><span class="p">,</span> <span class="n">stations</span><span class="o">=</span><span class="n">stations</span><span class="p">,</span>
+                           <span class="n">shortest_path</span><span class="o">=</span><span class="n">shortest_path</span><span class="p">,</span>
+                           <span class="n">total_time</span><span class="o">=</span><span class="n">total_time</span><span class="p">,</span> <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="shortest_path_correspondance_intermediate"><a class="viewcode-back" href="../controller.html#controller.shortest_path_correspondance_intermediate">[docs]</a><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/shortest_path_correspondance_intermediate&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">shortest_path_correspondance_intermediate</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Page du plus court chemin en nombre de correspondances entre deux stations avec une station intermédiaire</span>
+<span class="sd">        :return: Page du plus court chemin en nombre de correspondances entre deux stations avec une station intermédiaire</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">total_time</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Temps total du trajet</span>
+    <span class="n">shortest_path</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># Chemin le plus court</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
+        <span class="c1"># Récupérer les noms des stations à partir du formulaire</span>
+        <span class="n">station1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;station1&#39;</span><span class="p">])</span>
+        <span class="n">intermediate_s</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;intermediate&#39;</span><span class="p">])</span>
+        <span class="n">station2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;station2&#39;</span><span class="p">])</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># Récupérer les noms des stations à partir de leur ID</span>
+            <span class="n">source</span> <span class="o">=</span> <span class="n">graphe_ratp</span><span class="o">.</span><span class="n">get_station_name_by_id</span><span class="p">(</span><span class="n">station1</span><span class="p">)</span>
+            <span class="n">intermediate</span> <span class="o">=</span> <span class="n">graphe_ratp</span><span class="o">.</span><span class="n">get_station_name_by_id</span><span class="p">(</span><span class="n">intermediate_s</span><span class="p">)</span>
+            <span class="n">target</span> <span class="o">=</span> <span class="n">graphe_ratp</span><span class="o">.</span><span class="n">get_station_name_by_id</span><span class="p">(</span><span class="n">station2</span><span class="p">)</span>
+
+            <span class="c1"># Remplacer &quot;_&quot; par des espaces et ajouter la ligne entre parenthèses si disponible</span>
+            <span class="n">source</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
+            <span class="n">intermediate</span> <span class="o">=</span> <span class="n">intermediate</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
+            <span class="n">target</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
+            <span class="n">line1</span> <span class="o">=</span> <span class="n">graphe_ratp</span><span class="o">.</span><span class="n">get_station_line_by_id</span><span class="p">(</span><span class="n">station1</span><span class="p">)</span>
+            <span class="n">line_intermediate</span> <span class="o">=</span> <span class="n">graphe_ratp</span><span class="o">.</span><span class="n">get_station_line_by_id</span><span class="p">(</span><span class="n">intermediate_s</span><span class="p">)</span>
+            <span class="n">line2</span> <span class="o">=</span> <span class="n">graphe_ratp</span><span class="o">.</span><span class="n">get_station_line_by_id</span><span class="p">(</span><span class="n">station2</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">line1</span><span class="p">:</span>
+                <span class="n">source</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot; (Ligne </span><span class="si">{</span><span class="n">line1</span><span class="si">}</span><span class="s2">)&quot;</span>
+            <span class="k">if</span> <span class="n">line2</span><span class="p">:</span>
+                <span class="n">target</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot; (Ligne </span><span class="si">{</span><span class="n">line2</span><span class="si">}</span><span class="s2">)&quot;</span>
+            <span class="k">if</span> <span class="n">line_intermediate</span><span class="p">:</span>
+                <span class="n">intermediate</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot; (Ligne </span><span class="si">{</span><span class="n">line_intermediate</span><span class="si">}</span><span class="s2">)&quot;</span>
+            <span class="c1"># Calcul du chemin le plus court</span>
+            <span class="n">shortest_path_result</span> <span class="o">=</span> <span class="n">graphe_ratp</span><span class="o">.</span><span class="n">find_shortest_path_min_correspondences_with_intermediate</span><span class="p">(</span><span class="n">station1</span><span class="p">,</span>
+                                                                                                        <span class="n">intermediate_s</span><span class="p">,</span>
+                                                                                                        <span class="n">station2</span><span class="p">)</span>
+
+            <span class="n">shortest_path</span> <span class="o">=</span> <span class="n">shortest_path_result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="c1"># On transforme les IDs en noms de stations avec lignes</span>
+            <span class="n">shortest_path_names</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="c1"># Conversion des ids des stations actuelles avec les vrais ids (station_ids)</span>
+            <span class="n">shortest_path_ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">station_ids</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">station_id</span><span class="p">)]</span> <span class="k">for</span> <span class="n">station_id</span> <span class="ow">in</span> <span class="n">shortest_path</span><span class="p">]</span>
+
+            <span class="k">for</span> <span class="n">station_id</span> <span class="ow">in</span> <span class="n">shortest_path</span><span class="p">:</span>
+                <span class="n">station_name</span> <span class="o">=</span> <span class="n">graphe_ratp</span><span class="o">.</span><span class="n">get_station_name_by_id</span><span class="p">(</span><span class="n">station_id</span><span class="p">)</span>
+                <span class="c1"># Remplacer &quot;_&quot; par des espaces et ajouter la ligne entre parenthèses si disponible</span>
+                <span class="n">station_name</span> <span class="o">=</span> <span class="n">station_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="n">graphe_ratp</span><span class="o">.</span><span class="n">get_station_line_by_id</span><span class="p">(</span><span class="n">station_id</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">line</span><span class="p">:</span>
+                    <span class="n">station_name</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot; (Ligne </span><span class="si">{</span><span class="n">line</span><span class="si">}</span><span class="s2">)&quot;</span>
+                <span class="n">shortest_path_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">station_name</span><span class="p">)</span>
+            <span class="n">shortest_path</span> <span class="o">=</span> <span class="n">shortest_path_names</span>
+            <span class="n">total_time</span> <span class="o">=</span> <span class="n">shortest_path_result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="mi">60</span>
+            <span class="c1"># On garde 2 chiffres après la virgule</span>
+            <span class="n">total_time</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">total_time</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Erreur : &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+            <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;shortest_path_correspondance_intermediate.html&#39;</span><span class="p">,</span> <span class="n">error</span><span class="o">=</span><span class="s2">&quot;Erreur : &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+        <span class="c1"># Rendu du template avec les résultats</span>
+        <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;shortest_path_correspondance_intermediate.html&#39;</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
+                               <span class="n">intermediate</span><span class="o">=</span><span class="n">intermediate</span><span class="p">,</span> <span class="n">shortest_path</span><span class="o">=</span><span class="n">shortest_path</span><span class="p">,</span>
+                               <span class="n">total_time</span><span class="o">=</span><span class="n">total_time</span><span class="p">,</span> <span class="n">stations</span><span class="o">=</span><span class="n">stations</span><span class="p">,</span> <span class="n">shortest_path_ids</span><span class="o">=</span><span class="n">shortest_path_ids</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;shortest_path_correspondance_intermediate.html&#39;</span><span class="p">,</span> <span class="n">stations</span><span class="o">=</span><span class="n">stations</span><span class="p">,</span>
+                           <span class="n">shortest_path</span><span class="o">=</span><span class="n">shortest_path</span><span class="p">,</span>
+                           <span class="n">total_time</span><span class="o">=</span><span class="n">total_time</span><span class="p">,</span> <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="possible_correspondences"><a class="viewcode-back" href="../controller.html#controller.possible_correspondences">[docs]</a><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/possible_correspondences&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">possible_correspondences</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Page des correspondances possibles</span>
+<span class="sd">        :return: Page des correspondances possibles</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
+        <span class="c1"># Récupérer les lignes à partir du formulaire</span>
+        <span class="n">line1</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;line_nb1&#39;</span><span class="p">]</span>
+        <span class="n">line2</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;line_nb2&#39;</span><span class="p">]</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># Chercher les correspondances possibles</span>
+            <span class="n">correspondences</span> <span class="o">=</span> <span class="n">graphe_ratp</span><span class="o">.</span><span class="n">find_correspondance</span><span class="p">(</span><span class="n">line1</span><span class="p">,</span> <span class="n">line2</span><span class="p">)</span>
+            <span class="c1"># On transforme les IDs en noms de stations avec lignes</span>
+            <span class="n">correspondences_names</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">station_id</span> <span class="ow">in</span> <span class="n">correspondences</span><span class="p">:</span>
+                <span class="n">station_name</span> <span class="o">=</span> <span class="n">graphe_ratp</span><span class="o">.</span><span class="n">get_station_name_by_id</span><span class="p">(</span><span class="n">station_id</span><span class="p">)</span>
+                <span class="c1"># Remplacer &quot;_&quot; par des espaces et ajouter la ligne entre parenthèses si disponible</span>
+                <span class="n">station_name</span> <span class="o">=</span> <span class="n">station_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="n">graphe_ratp</span><span class="o">.</span><span class="n">get_station_line_by_id</span><span class="p">(</span><span class="n">station_id</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">line</span><span class="p">:</span>
+                    <span class="n">station_name</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot; (Ligne </span><span class="si">{</span><span class="n">line</span><span class="si">}</span><span class="s2">)&quot;</span>
+                <span class="n">correspondences_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">station_name</span><span class="p">)</span>
+            <span class="c1"># Conversion des ids des stations actuelles avec les vrais ids (station_ids)</span>
+            <span class="n">correspondences_ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">station_ids</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">station_id</span><span class="p">)]</span> <span class="k">for</span> <span class="n">station_id</span> <span class="ow">in</span> <span class="n">correspondences</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Erreur : &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+            <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;possible_correspondences.html&#39;</span><span class="p">,</span> <span class="n">error</span><span class="o">=</span><span class="s2">&quot;Erreur : &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+        <span class="c1"># Rendu du template avec les résultats</span>
+        <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;possible_correspondences.html&#39;</span><span class="p">,</span> <span class="n">correspondences_name</span><span class="o">=</span><span class="n">correspondences_names</span><span class="p">,</span>
+                               <span class="n">correspondences_list</span><span class="o">=</span><span class="n">correspondences_ids</span><span class="p">,</span> <span class="n">line_nb1</span><span class="o">=</span><span class="n">line1</span><span class="p">,</span> <span class="n">line_nb2</span><span class="o">=</span><span class="n">line2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;possible_correspondences.html&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="list_stations_lines"><a class="viewcode-back" href="../controller.html#controller.list_stations_lines">[docs]</a><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/list_stations_lines&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">list_stations_lines</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Page de la liste des stations d&#39;une ligne</span>
+<span class="sd">        :return: Page de la liste des stations d&#39;une ligne</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
+        <span class="c1"># Récupérer le numéro de la ligne à partir du formulaire</span>
+        <span class="n">line_nb</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;line&#39;</span><span class="p">]</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># Récupérer les stations de la ligne</span>
+            <span class="n">stations_line</span> <span class="o">=</span> <span class="n">graphe_ratp</span><span class="o">.</span><span class="n">stations_list</span><span class="p">(</span><span class="n">line_nb</span><span class="p">)</span>
+            <span class="c1"># On converti les stations en tableau d&#39;id</span>
+            <span class="n">stations_line</span> <span class="o">=</span> <span class="p">[</span><span class="n">station</span><span class="o">.</span><span class="n">get_id</span><span class="p">()</span> <span class="k">for</span> <span class="n">station</span> <span class="ow">in</span> <span class="n">stations_line</span><span class="p">]</span>
+            <span class="c1"># On transforme les IDs en noms de stations avec lignes</span>
+            <span class="n">stations_line_names</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">station_id</span> <span class="ow">in</span> <span class="n">stations_line</span><span class="p">:</span>
+                <span class="n">station_name</span> <span class="o">=</span> <span class="n">graphe_ratp</span><span class="o">.</span><span class="n">get_station_name_by_id</span><span class="p">(</span><span class="n">station_id</span><span class="p">)</span>
+                <span class="c1"># Remplacer &quot;_&quot; par des espaces et ajouter la ligne entre parenthèses si disponible</span>
+                <span class="n">station_name</span> <span class="o">=</span> <span class="n">station_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="n">graphe_ratp</span><span class="o">.</span><span class="n">get_station_line_by_id</span><span class="p">(</span><span class="n">station_id</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">line</span><span class="p">:</span>
+                    <span class="n">station_name</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot; (Ligne </span><span class="si">{</span><span class="n">line</span><span class="si">}</span><span class="s2">)&quot;</span>
+                <span class="n">stations_line_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">station_name</span><span class="p">)</span>
+            <span class="c1"># On converti les ids des stations actuelles avec les vrais ids (station_ids)</span>
+            <span class="n">stations_line</span> <span class="o">=</span> <span class="p">[</span><span class="n">station_ids</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">station_id</span><span class="p">)]</span> <span class="k">for</span> <span class="n">station_id</span> <span class="ow">in</span> <span class="n">stations_line</span><span class="p">]</span>
+
+            <span class="c1"># Rendu du template avec les résultats</span>
+            <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;list_stations_lines.html&#39;</span><span class="p">,</span> <span class="n">stations_line_names</span><span class="o">=</span><span class="n">stations_line_names</span><span class="p">,</span>
+                                   <span class="n">stations_line</span><span class="o">=</span><span class="n">stations_line</span><span class="p">,</span> <span class="n">line_nb</span><span class="o">=</span><span class="n">line_nb</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Erreur : &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+            <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;list_stations_lines.html&#39;</span><span class="p">,</span> <span class="n">error</span><span class="o">=</span><span class="s2">&quot;Erreur : &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;list_stations_lines.html&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="minimum_spanning_tree"><a class="viewcode-back" href="../controller.html#controller.minimum_spanning_tree">[docs]</a><span class="k">def</span> <span class="nf">minimum_spanning_tree</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Arbre couvrant de poids minimum</span>
+<span class="sd">        :return:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">min_spanning_tree</span> <span class="o">=</span> <span class="n">graphe_ratp</span><span class="o">.</span><span class="n">find_min_spanning_tree</span><span class="p">()</span>
+
+    <span class="c1"># Créez un objet nx.Graph()</span>
+    <span class="n">nx_graph</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+
+    <span class="c1"># Ajoutez les nœuds au graphe nx.Graph()</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">graphe_ratp</span><span class="o">.</span><span class="n">stations</span><span class="p">:</span>
+        <span class="n">nx_graph</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+    <span class="c1"># Ajoutez les arêtes de l&#39;arbre minimum couvrant au graphe nx.Graph()</span>
+    <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">min_spanning_tree</span><span class="p">:</span>
+        <span class="n">source_id</span> <span class="o">=</span> <span class="n">edge</span><span class="o">.</span><span class="n">get_source</span><span class="p">()</span>
+        <span class="n">target_id</span> <span class="o">=</span> <span class="n">edge</span><span class="o">.</span><span class="n">get_cible</span><span class="p">()</span>
+        <span class="n">nx_graph</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">source_id</span><span class="p">,</span> <span class="n">target_id</span><span class="p">)</span>
+    <span class="c1"># Affichez le graphe</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">nx_graph</span><span class="p">)</span>  <span class="c1"># Calculez la disposition des nœuds</span>
+    <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx</span><span class="p">(</span><span class="n">nx_graph</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># Dessinez le graphe</span>
+    <span class="n">nx</span><span class="o">.</span><span class="n">write_gexf</span><span class="p">(</span><span class="n">nx_graph</span><span class="p">,</span> <span class="s2">&quot;graph.gexf&quot;</span><span class="p">)</span>  <span class="c1"># Exportez le graphe au format GEXF pour Gephi</span></div>
+
+
+<span class="c1"># minimum_spanning_tree() # Décommentez pour afficher l&#39;arbre couvrant de poids minimum sous fichier graph.gexf</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>  <span class="c1"># On lance le serveur Flask</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2023, COUDIN Ulrich, COQUERELLE Mélissa, LAMARQUE Noé, MOLINIER Hugo
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/scripts/furo.js"></script>
+    <script src="../_static/translations.js"></script>
+    </body>
+</html>
